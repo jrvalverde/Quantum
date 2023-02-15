@@ -1,0 +1,265 @@
+INMA 
+  Ergo, version 3.2, a program for linear scaling electronic structure
+  calculations.
+  Copyright (C) 2012 Elias Rudberg, Emanuel H. Rubensson, and Pawel Salek.
+  
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+  
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+  
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  
+  Primary academic reference:
+  Kohn−Sham Density Functional Theory Electronic Structure Calculations 
+  with Linearly Scaling Computational Time and Memory Usage,
+  Elias Rudberg, Emanuel H. Rubensson, and Pawel Salek,
+  J. Chem. Theory Comput. 7, 340 (2011),
+  <http://dx.doi.org/10.1021/ct100611z>
+  
+  For further information about Ergo, see <http://www.ergoscf.org>.
+
+INMA  threads_J := 4
+
+INMA  threads_K := 4
+
+INMA  threads := 4
+
+INMA  no_of_threads_for_V := 4
+
+INMA ERGO version 3.2.1
+
+INMA Reading molecule file: h.xyz
+
+INMA read_molecule_file_in_xyz_format: File 'h.xyz' read OK, nBytes = 19
+INMA read_molecule_file_in_xyz_format: nAtoms =      1
+INMA  basis := STO-3G
+
+INMA Basis really set to STO-3G
+
+INMA  use_simple_starting_guess := 1
+
+INMA  use_fmm := 1
+
+INMA  threshold_2el_J := 1e-06
+
+INMA  threshold_2el_K := 1e-06
+
+INMA  fmm_box_size := 4.4
+
+INMA  convergence_threshold := 0.01
+
+INMA  spin_polarization := 1
+
+INMA running HF
+
+ININ calling boysfunction_init
+TIIN boysfunction_init took      1.19 usr cpu s       0.00 sys cpu s       1.21 wall s
+ININ calling setup_basis_func_polys
+WAIN Trying basis set file './STO-3G'...
+WAIN Trying basis set file 'basis/STO-3G'...
+WAIN Trying basis set file '../basis/STO-3G'...
+WAIN Trying basis set file '/opt/quantum/ergoSCF/share/ergo/basis/STO-3G'...
+ININ total number of shells in basis set: 338
+ININ Basis set file 'STO-3G' processed OK, noOfAtomTypes = 48
+ININ setup_shells_multi_basis_getcount, noOfShells = 1
+ININ BasisInfoStruct::addBasisfuncsForMolecule, noOfShellsNew = 1
+ININ BasisInfoStruct::normalizeShells finished, normalizationFactor min max :   1.00000000205   1.00000000205
+ININ get_basis_funcs returned OK, number of basis funcs: 1
+ININ getSimplePrimitivesAll returned OK, n = 3
+INSC creating matrix SizesAndBlocks using blockSizeVector:
+INSC blockSizeVector[0] =        65536
+INSC blockSizeVector[1] =         8192
+INSC blockSizeVector[2] =         1024
+INSC blockSizeVector[3] =           32
+INSC blockSizeVector[4] =            1
+INSC creating matrix permutation using blockSizeVector:
+INSC blockSizeVector[0] =        65536
+INSC blockSizeVector[1] =         8192
+INSC blockSizeVector[2] =         1024
+INSC blockSizeVector[3] =           32
+INSC blockSizeVector[4] =            1
+INMA OpenMP used in matrix library. Number of threads set to 4.
+INMA OpenMP used in matrix library. Parallel level set to    1.
+INMA Calling grid_set_tmpdir with tmpdir = '/tmp'
+INMA Running HF
+INSC SCF_general constructor, number of basis functions: 1
+INSC ************** Some general info here **********************
+INSC VERSION: 3.2.1  time :  Wed Oct  2 12:28:13 2013
+INSC machine_epsilon =   1.1e-16
+INSC sizeof(ergo_real) = 8
+INSC sizeof(size_t)    = 4
+INSC sizeof(int)       = 4
+INSC sizeof(long)      = 4
+INSC sizeof(char*)     = 4
+INSC Host name:         'veda'
+INSC Working directory: '/home/jr/work/Quantum/shell/ergoSCF/h'
+INSC Process ID (PID):       9365
+INSC ************************************************************
+INSC Min internuclear distance:      0.00000 a.u.  =      0.00000 Angstrom
+INSC Max internuclear distance:      0.00000 a.u.  =      0.00000 Angstrom
+ININ compute_operator_matrix_sparse, nBastA =      1, nBastB =      1, pows (x y z) = (0 0 0)
+ININ create_box_system end OK, toplevelBoxSize:   7.0, #levels:  1, #boxes at top level:      1
+ININ compute_operator_matrix_sparse finished.
+TIIN compute_operator_matrix_sparse took      0.06 usr cpu s       0.00 sys cpu s       0.04 wall s
+INSC diag elements of ovl matrix differ from 1 by at most 1.11022e-16
+INSC Matrix 'S_symm before trunc' ( symm ): n =      1, nnz =            1 <-> 100.00 %, mem usage  0.0000 G
+INSC truncating S using threshold value  1e-09
+INSC Truncated S (eucl), selected threshold =      1e-09, returned error =          0, nnz before = 100.0000 %, nnz after = 100.0000 %
+INSC Computing Euclidean norm of overlap matrix (just for fun)...
+TISC S_symm.eucl() took      0.12 usr cpu s       0.00 sys cpu s       0.05 wall s
+INSC Euclidean norm of overlap matrix =          1.00000000000
+INSC Calling invCholFactor.inch with matOpts.threshold_inch = 0
+TISC invCholFactor.inch took     -0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+INSC Matrix 'invCholFactor before truncation' (triang): n =      1, nnz =            1 <-> 100.00 %, mem usage  0.0000 G
+INSC truncating Z using threshold value  1e-08
+INSC Truncated Z (eucl), selected threshold =      1e-08, returned error =          0, nnz before = 100.0000 %, nnz after = 100.0000 %
+INSC Matrix 'invCholFactor after truncation' (triang): n =      1, nnz =            1 <-> 100.00 %, mem usage  0.0000 G
+INSC Frobenius norm of invCholFactor after truncation =          1.00000000000
+INSC Euclidean norm of invCholFactor after truncation =          1.00000000000
+TISC invCholFactor.eucl() took     -0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+INSC testing invCholFactor by computing ZT*S*Z
+INSC Truncating tmp matrix S*Z using eucl_thresh() with threshold value  1e-08
+INSC frobenius_error for ZT*S*Z is 1.11022e-16
+TISC testing invCholFactor by computing ZT*S*Z took      0.08 usr cpu s       0.00 sys cpu s       0.04 wall s
+INSC entering compute_h_core_matrix_sparse, nAtoms = 1, n = 1, threshold = 1e-12
+INSC get_T returned OK.
+TISC get_T took      0.07 usr cpu s       0.00 sys cpu s       0.03 wall s
+INSC compute_V_sparse, molecule.noOfAtoms =     1, maxCharge =   1.00
+ININ get_basis_func_pair_list_1el, n =      1
+ININ create_box_system end OK, toplevelBoxSize:   7.0, #levels:  1, #boxes at top level:      1
+TIIN get_basis_func_pair_list_1el took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ get_basis_func_pair_list_1el, n =      1
+ININ create_box_system end OK, toplevelBoxSize:   7.0, #levels:  1, #boxes at top level:      1
+TIIN get_basis_func_pair_list_1el took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+INSC noOfBasisFuncIndexPairs = 1 ==> storing 100.00 % of a full matrix
+ININ compute_V_linear start.
+ININ compute_V_linear nDistrs    =         9
+ININ compute_V_linear groupCount =         6
+ININ create_box_system end OK, toplevelBoxSize:  10.0, #levels:  1, #boxes at top level:      1
+TIIN compute_V_linear init part (including create_nuclei_mm_tree) took      0.27 usr cpu s       0.00 sys cpu s       0.11 wall s
+TISC Computation of V took      0.34 usr cpu s       0.00 sys cpu s       0.15 wall s
+INSC compute_h_core_matrix_sparse ending OK.
+TISC compute_h_core_matrix_sparse took      0.40 usr cpu s       0.00 sys cpu s       0.18 wall s
+INSC Matrix 'H_core_Matrix before trunc' ( symm ): n =      1, nnz =            1 <-> 100.00 %, mem usage  0.0000 G
+INSC Truncated H_core_Matrix (eucl with Z), selected threshold =      5e-11, returned error =          0, nnz before = 100.0000 %, nnz after = 100.0000 %
+INSC Matrix 'H_core_Matrix after trunc' ( symm ): n =      1, nnz =            1 <-> 100.00 %, mem usage  0.0000 G
+INSC noOfElectrons_alpha  noOfElectrons_beta  =  1 0
+INSC SCF_general::do_SCF_iterations
+INMA get_nuclear_repulsion_energy, N = 1
+INMA get_nuclear_repulsion_energy returning energy          0.0000000000000000000000
+INMA get_nuclear_electric_field_energy, N = 1
+INMA get_nuclear_electric_field_energy returning energy          0.0000000000000000000000
+INSC get_simple_starting_guess_sparse: calling densityMatrix.assign_from_sparse.
+INSC get_simple_starting_guess_sparse: densityMatrix.assign_from_sparse returned.
+INSC get_simple_starting_guess_sparse: calling densityMatrix.assign_from_sparse.
+INSC get_simple_starting_guess_sparse: densityMatrix.assign_from_sparse returned.
+INSC Matrix 'starting guess density matrix (alpha)' ( symm ): n =      1, nnz =            1 <-> 100.00 %, mem usage  0.0000 G
+INSC Matrix 'starting guess density matrix (beta )' ( symm ): n =      1, nnz =            1 <-> 100.00 %, mem usage  0.0000 G
+INSC Beginning of SCF cycle 1:  Wed Oct  2 12:28:13 2013
+INDE compute_J_by_boxes_sparse() start.
+TIDE FileWritable::writeAndReadAll took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+INDE writeAndReadAll: '0 MB (2 MatrixGeneral, 0 > 1 MB) + 0 MB (8 MatrixSymmetric, 0 > 1 MB) = 0 MB (10 total, 0 > 1 MB)
+INSC compute_J_by_boxes_sparse, maxDensityMatrixElement =          1.00000000000
+ININ get_basis_func_pair_list, n =      1
+ININ create_box_system end OK, toplevelBoxSize:   7.0, #levels:  1, #boxes at top level:      1
+TIIN get_basis_func_pair_list_2el took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+INSC compute_J_by_boxes_sparse: noOfBasisFuncIndexPairs = 1 ==> storing 100.00 % of a full matrix
+ININ entering compute_J_by_boxes_linear, no of basis funcs =     1, threshold_J =   1e-06
+ININ use_fmm = 1, fmm_box_size =   4.40
+TIIN Compute extent for all distrs took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ extent_min =    1.046, extent_max =    5.103
+ININ Creating list of distributions etc done, distrCount =         9
+TIIN Creating list of distributions etc took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ create_box_system end OK, toplevelBoxSize:   4.4, #levels:  1, #boxes at top level:      1
+TIIN Creating boxes took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ noOfBranches = 4, splitters:   4.40  2.20  0.00
+ININ J org done, groupCount =        6
+TIIN J org took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+TIIN Generate group multipoles took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ totChargeWholeSystem =          1.00000000000
+ININ Generating multipole for each branch at top level, MAX_MULTIPOLE_DEGREE = 15
+TIIN Translate multipoles (step 1) took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+TIIN Translate multipoles (step 2) took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+TIIN mm_limits_init took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ job lists for J created OK, noOfJobs_J_standard =       10, noOfJobs_J_multipole =        0
+TIIN Creating job lists for J took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ execute_joblist_J_std_threaded, noOfThreads =  4
+ININ 4 threads started OK.
+ININ all 4 threads have finished.
+TIIN execute_joblist_J_std_threaded took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+TIIN sort_list_of_multipole_jobs took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ execute_joblist_J_fmm_shared: Allocating multipoleList_4, maxnoOfMinimalDistrsPerBoxBranch =         5
+ININ execute_joblist_J_fmm_shared: Allocating multipoleList_4, maxnoOfMinimalDistrsPerBoxBranch =         5
+ININ execute_joblist_J_fmm_shared: Allocating multipoleList_4, maxnoOfMinimalDistrsPerBoxBranch =         5
+ININ execute_joblist_J_fmm_shared: jobIndexLo =            0, jobIndexHi =            0
+ININ execute_joblist_J_fmm_shared: jobIndexLo =            0, jobIndexHi =            0
+ININ execute_joblist_J_fmm_shared: Allocating multipoleList_4, maxnoOfMinimalDistrsPerBoxBranch =         5
+ININ execute_joblist_J_fmm_shared: jobIndexLo =            0, jobIndexHi =            0
+ININ execute_joblist_J_fmm_shared: done!
+ININ execute_joblist_J_fmm_shared: done!
+ININ execute_joblist_J_fmm_shared: jobIndexLo =            0, jobIndexHi =            0
+ININ execute_joblist_J_fmm_shared: done!
+ININ execute_joblist_J_fmm_shared: done!
+ININ multipole job list for J executed, largest L used:  0
+TIIN Executing multipole job list for J took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ compute_J_by_boxes_linear ending OK.
+TIIN compute_J_by_boxes_linear took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+TISC compute_J_by_boxes_sparse total took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ entering create_CSR_for_K, no of basis funcs =     1, threshold_K =   1e-06
+ININ create_box_system end OK, toplevelBoxSize:   7.0, #levels:  1, #boxes at top level:      1
+ININ create_box_system end OK, toplevelBoxSize:   7.0, #levels:  1, #boxes at top level:      1
+ININ create_box_system end OK, toplevelBoxSize:   7.0, #levels:  1, #boxes at top level:      1
+TIIN create_CSR_for_K getting list of distrs took      0.00 usr cpu s      -0.00 sys cpu s       0.00 wall s
+ININ list of neighbors complete.
+TIIN create_CSR_for_K getting list of neighbors took     -0.00 usr cpu s      -0.00 sys cpu s       0.00 wall s
+TIIN create_CSR_for_K sort each list of neighbors took     -0.00 usr cpu s      -0.00 sys cpu s       0.00 wall s
+ININ 4 threads started OK.
+TIIN identify_needed_elements() took     -0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ computing nnz..
+ININ create_CSR_for_K: predicted nnz =            1, <-> 100.00% of a full matrix
+TIIN create_CSR_for_K last part took     -0.00 usr cpu s      -0.00 sys cpu s       0.00 wall s
+TIIN create_CSR_for_K total took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+TIIN mm_limits_init took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ entering compute_K_by_boxes, no of basis funcs =     1, threshold_K =   1e-06, exchange_box_size =   5.00
+ININ create_box_system end OK, toplevelBoxSize:   7.0, #levels:  1, #boxes at top level:      1
+ININ create_box_system end OK, toplevelBoxSize:   7.0, #levels:  1, #boxes at top level:      1
+ININ create_box_system end OK, toplevelBoxSize:   7.0, #levels:  1, #boxes at top level:      1
+TIIN Compute extent for all distrs took     -0.00 usr cpu s      -0.00 sys cpu s       0.00 wall s
+ININ Creating list of distributions done, distrCountTot =         9
+TIIN Creating list of distributions took     -0.00 usr cpu s      -0.00 sys cpu s       0.00 wall s
+ININ create_box_system end OK, toplevelBoxSize:   5.0, #levels:  1, #boxes at top level:      1
+ININ create_box_system end OK, toplevelBoxSize:   2.5, #levels:  1, #boxes at top level:      1
+ININ noOfLevelsBasisFuncs = 1, noOfLevelsDiff = 0
+TIIN Creating boxes etc took     -0.00 usr cpu s      -0.00 sys cpu s       0.00 wall s
+TIIN getting multipoleNormVectorList took     -0.00 usr cpu s      -0.00 sys cpu s       0.00 wall s
+ININ starting loop to setup basisFuncGroupInfoList, with added index checks.
+TIIN GetLimitsAllLevels took     -0.00 usr cpu s      -0.00 sys cpu s       0.00 wall s
+TIIN K organize_distributions for all boxes took     -0.00 usr cpu s      -0.00 sys cpu s       0.00 wall s
+TIIN Generate multipole limits for each group and for each box took     -0.00 usr cpu s      -0.00 sys cpu s       0.00 wall s
+INSC getDmatLimitMatrixCSRList start.
+TIIN getting densityMatrixLimitMatrixList took     -0.00 usr cpu s      -0.00 sys cpu s       0.00 wall s
+ININ job list for K created,        1 jobs
+TIIN creating job list for K took     -0.00 usr cpu s      -0.00 sys cpu s       0.00 wall s
+ININ execute_joblist_K_threaded, noOfThreads =  4, basisFuncListCount_max =     1
+ININ 4 threads started OK.
+ININ all 4 threads have finished, took        0 wall s.
+TIIN Executing job list for K took     -0.00 usr cpu s      -0.00 sys cpu s       0.00 wall s
+TIIN compute_K_by_boxes took     -0.00 usr cpu s      -0.00 sys cpu s       0.00 wall s
+TISC compute_K_by_boxes_sparse total took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ entering create_CSR_for_K, no of basis funcs =     1, threshold_K =   1e-06
+ININ create_box_system end OK, toplevelBoxSize:   7.0, #levels:  1, #boxes at top level:      1
+ININ create_box_system end OK, toplevelBoxSize:   7.0, #levels:  1, #boxes at top level:      1
+ERIN error in create_CSR_for_K: (distrCount <= 0)
+ERSC error in compute_K_by_boxes
+ERSC error in compute_K_by_boxes_sparse
+ERSC error in get_2e_matrices_and_energy_simple_HF_sparse_unrestricted
+ERSC error in get_2e_matrices_and_energy_sparse_unrestricted
+ERMA Exception caught: error in get_2e_matrices_and_energy_sparse_unrestricted
+

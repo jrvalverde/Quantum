@@ -1,0 +1,13 @@
+@<TRIPOS>MOLECULE
+h2o.xyz
+ 3 2 0 0 0
+SMALL
+GASTEIGER
+
+@<TRIPOS>ATOM
+      1 O          99.8140  100.8350  101.2320 O.3     1  HOH1       -0.2282512
+      2 H          99.3292   99.9768  101.0630 H       0  HOH0        0.1140356
+      3 H          99.1516  101.5610  101.4140 H       0  HOH0        0.1142156
+@<TRIPOS>BOND
+     1     2     1    1
+     2     1     3    1

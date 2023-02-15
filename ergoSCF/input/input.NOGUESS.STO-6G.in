@@ -1,0 +1,27 @@
+        set_nthreads("detect")
+        use_simple_starting_guess = 1;
+        basis = "STO-6G"
+        charge = 0
+        do_ci_after_scf = 0
+        enable_memory_usage_output = 1
+        spin_polarization = 0
+        output_basis = 1
+        J_K.use_fmm = 1
+        J_K.threshold_2el_J = 1e-10
+        J_K.threshold_2el_K = 1e-10
+        J_K.fmm_box_size = 4.4
+        J_K.exchange_box_size = 4.4
+        scf.calculation_identifier = "input"
+        scf.convergence_threshold = 1e-6
+        scf.create_mtx_files_dipole = 1
+        scf.create_mtx_files_D = 1
+        scf.create_mtx_files_F = 1
+        scf.create_mtx_file_S = 1
+        scf.output_homo_and_lumo_eigenvectors = 1
+        scf.force_restricted = 0
+        scf.force_unrestricted = 0
+        scf.save_final_potential = 0
+        scf.output_mulliken_pop = 1
+        scf.write_overlap_matrix = 1
+        
+        run "HF"

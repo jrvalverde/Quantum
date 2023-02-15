@@ -1,0 +1,869 @@
+INMA 
+  Ergo, version 3.2, a program for linear scaling electronic structure
+  calculations.
+  Copyright (C) 2012 Elias Rudberg, Emanuel H. Rubensson, and Pawel Salek.
+  
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+  
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+  
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  
+  Primary academic reference:
+  Kohn−Sham Density Functional Theory Electronic Structure Calculations 
+  with Linearly Scaling Computational Time and Memory Usage,
+  Elias Rudberg, Emanuel H. Rubensson, and Pawel Salek,
+  J. Chem. Theory Comput. 7, 340 (2011),
+  <http://dx.doi.org/10.1021/ct100611z>
+  
+  For further information about Ergo, see <http://www.ergoscf.org>.
+
+INMA  threads_J := 4
+
+INMA  threads_K := 4
+
+INMA  threads := 4
+
+INMA  no_of_threads_for_V := 4
+
+INMA ERGO version 3.2.1
+
+INMA Reading molecule file: h2o.xyz
+
+INMA read_molecule_file_in_xyz_format: File 'h2o.xyz' read OK, nBytes = 162
+INMA read_molecule_file_in_xyz_format: nAtoms =      3
+INMA  basis := STO-3G
+
+INMA Basis really set to STO-3G
+
+INMA  use_simple_starting_guess := 1
+
+INMA  use_fmm := 1
+
+INMA  threshold_2el_J := 1e-06
+
+INMA  threshold_2el_K := 1e-06
+
+INMA  fmm_box_size := 4.4
+
+INMA  convergence_threshold := 0.01
+
+INMA  spin_polarization := 0
+
+INMA running HF
+
+ININ calling boysfunction_init
+TIIN boysfunction_init took      1.07 usr cpu s       0.00 sys cpu s       1.08 wall s
+ININ calling setup_basis_func_polys
+WAIN Trying basis set file './STO-3G'...
+WAIN Trying basis set file 'basis/STO-3G'...
+WAIN Trying basis set file '../basis/STO-3G'...
+WAIN Trying basis set file '/opt/quantum/ergoSCF/share/ergo/basis/STO-3G'...
+ININ total number of shells in basis set: 338
+ININ Basis set file 'STO-3G' processed OK, noOfAtomTypes = 48
+ININ setup_shells_multi_basis_getcount, noOfShells = 5
+ININ BasisInfoStruct::addBasisfuncsForMolecule, noOfShellsNew = 5
+ININ BasisInfoStruct::normalizeShells finished, normalizationFactor min max :   0.99999998656   1.00000000205
+ININ get_basis_funcs returned OK, number of basis funcs: 7
+ININ getSimplePrimitivesAll returned OK, n = 21
+INSC creating matrix SizesAndBlocks using blockSizeVector:
+INSC blockSizeVector[0] =        65536
+INSC blockSizeVector[1] =         8192
+INSC blockSizeVector[2] =         1024
+INSC blockSizeVector[3] =           32
+INSC blockSizeVector[4] =            1
+INSC creating matrix permutation using blockSizeVector:
+INSC blockSizeVector[0] =        65536
+INSC blockSizeVector[1] =         8192
+INSC blockSizeVector[2] =         1024
+INSC blockSizeVector[3] =           32
+INSC blockSizeVector[4] =            1
+INMA OpenMP used in matrix library. Number of threads set to 4.
+INMA OpenMP used in matrix library. Parallel level set to    1.
+INMA Calling grid_set_tmpdir with tmpdir = '/tmp'
+INMA Running HF
+INSC SCF_general constructor, number of basis functions: 7
+INSC ************** Some general info here **********************
+INSC VERSION: 3.2.1  time :  Wed Oct  2 12:35:43 2013
+INSC machine_epsilon =   1.1e-16
+INSC sizeof(ergo_real) = 8
+INSC sizeof(size_t)    = 4
+INSC sizeof(int)       = 4
+INSC sizeof(long)      = 4
+INSC sizeof(char*)     = 4
+INSC Host name:         'veda'
+INSC Working directory: '/home/jr/work/Quantum/shell/ergoSCF/h2o'
+INSC Process ID (PID):      20203
+INSC ************************************************************
+INSC Min internuclear distance:      1.88876 a.u.  =      0.99949 Angstrom
+INSC Max internuclear distance:      3.08462 a.u.  =      1.63231 Angstrom
+ININ compute_operator_matrix_sparse, nBastA =      7, nBastB =      7, pows (x y z) = (0 0 0)
+ININ create_box_system end OK, toplevelBoxSize:   7.0, #levels:  1, #boxes at top level:      1
+ININ compute_operator_matrix_sparse finished.
+TIIN compute_operator_matrix_sparse took      0.07 usr cpu s       0.00 sys cpu s       0.04 wall s
+INSC diag elements of ovl matrix differ from 1 by at most 2.22045e-16
+INSC Matrix 'S_symm before trunc' ( symm ): n =      7, nnz =           49 <-> 100.00 %, mem usage  0.0000 G
+INSC truncating S using threshold value  1e-09
+INSC Truncated S (eucl), selected threshold =      1e-09, returned error =          0, nnz before = 100.0000 %, nnz after = 100.0000 %
+INSC Computing Euclidean norm of overlap matrix (just for fun)...
+TISC S_symm.eucl() took      0.28 usr cpu s       0.00 sys cpu s       0.19 wall s
+INSC Euclidean norm of overlap matrix =          1.86124928637
+INSC Calling invCholFactor.inch with matOpts.threshold_inch = 0
+TISC invCholFactor.inch took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+INSC Matrix 'invCholFactor before truncation' (triang): n =      7, nnz =           49 <-> 100.00 %, mem usage  0.0000 G
+INSC truncating Z using threshold value  1e-08
+INSC Truncated Z (eucl), selected threshold =      1e-08, returned error =          0, nnz before = 100.0000 %, nnz after = 100.0000 %
+INSC Matrix 'invCholFactor after truncation' (triang): n =      7, nnz =           49 <-> 100.00 %, mem usage  0.0000 G
+INSC Frobenius norm of invCholFactor after truncation =          3.04422546161
+INSC Euclidean norm of invCholFactor after truncation =          1.64191107144
+TISC invCholFactor.eucl() took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+INSC testing invCholFactor by computing ZT*S*Z
+INSC Truncating tmp matrix S*Z using eucl_thresh() with threshold value  1e-08
+INSC frobenius_error for ZT*S*Z is 4.08971e-16
+TISC testing invCholFactor by computing ZT*S*Z took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+INSC entering compute_h_core_matrix_sparse, nAtoms = 3, n = 7, threshold = 1e-12
+INSC get_T returned OK.
+TISC get_T took      0.09 usr cpu s       0.00 sys cpu s       0.05 wall s
+INSC compute_V_sparse, molecule.noOfAtoms =     3, maxCharge =   8.00
+ININ get_basis_func_pair_list_1el, n =      7
+ININ create_box_system end OK, toplevelBoxSize:   7.0, #levels:  1, #boxes at top level:      1
+TIIN get_basis_func_pair_list_1el took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ get_basis_func_pair_list_1el, n =      7
+ININ create_box_system end OK, toplevelBoxSize:   7.0, #levels:  1, #boxes at top level:      1
+TIIN get_basis_func_pair_list_1el took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+INSC noOfBasisFuncIndexPairs = 28 ==> storing  57.14 % of a full matrix
+ININ compute_V_linear start.
+ININ compute_V_linear nDistrs    =       306
+ININ compute_V_linear groupCount =        78
+ININ create_box_system end OK, toplevelBoxSize:  10.0, #levels:  1, #boxes at top level:      1
+TIIN compute_V_linear init part (including create_nuclei_mm_tree) took      0.73 usr cpu s       0.00 sys cpu s       0.35 wall s
+TISC Computation of V took      0.80 usr cpu s       0.00 sys cpu s       0.39 wall s
+INSC compute_h_core_matrix_sparse ending OK.
+TISC compute_h_core_matrix_sparse took      0.89 usr cpu s       0.00 sys cpu s       0.44 wall s
+INSC Matrix 'H_core_Matrix before trunc' ( symm ): n =      7, nnz =           49 <-> 100.00 %, mem usage  0.0000 G
+INSC Truncated H_core_Matrix (eucl with Z), selected threshold =      5e-11, returned error =          0, nnz before = 100.0000 %, nnz after = 100.0000 %
+INSC Matrix 'H_core_Matrix after trunc' ( symm ): n =      7, nnz =           49 <-> 100.00 %, mem usage  0.0000 G
+INSC SCF_general::do_SCF_iterations
+INMA get_nuclear_repulsion_energy, N = 3
+INMA get_nuclear_repulsion_energy returning energy          8.7929885016904254513292
+INMA get_nuclear_electric_field_energy, N = 3
+INMA get_nuclear_electric_field_energy returning energy          0.0000000000000000000000
+INSC get_simple_starting_guess_sparse: calling densityMatrix.assign_from_sparse.
+INSC get_simple_starting_guess_sparse: densityMatrix.assign_from_sparse returned.
+INSC Matrix 'starting guess density matrix' ( symm ): n =      7, nnz =           49 <-> 100.00 %, mem usage  0.0000 G
+INSC Beginning of SCF cycle 1:  Wed Oct  2 12:35:44 2013
+INDE compute_J_by_boxes_sparse() start.
+TIDE FileWritable::writeAndReadAll took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+INDE writeAndReadAll: '0 MB (1 MatrixGeneral, 0 > 1 MB) + 0 MB (7 MatrixSymmetric, 0 > 1 MB) + 0 MB (2 VectorGeneral, 0 > 1 MB) = 0 MB (10 total, 0 > 1 MB)
+INSC compute_J_by_boxes_sparse, maxDensityMatrixElement =          1.42857142857
+ININ get_basis_func_pair_list, n =      7
+ININ create_box_system end OK, toplevelBoxSize:   7.0, #levels:  1, #boxes at top level:      1
+TIIN get_basis_func_pair_list_2el took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+INSC compute_J_by_boxes_sparse: noOfBasisFuncIndexPairs = 28 ==> storing  57.14 % of a full matrix
+ININ entering compute_J_by_boxes_linear, no of basis funcs =     7, threshold_J =   1e-06
+ININ use_fmm = 1, fmm_box_size =   4.40
+TIIN Compute extent for all distrs took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ extent_min =    0.090, extent_max =    5.442
+ININ Creating list of distributions etc done, distrCount =       303
+TIIN Creating list of distributions etc took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ create_box_system end OK, toplevelBoxSize:   4.4, #levels:  1, #boxes at top level:      1
+TIIN Creating boxes took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ noOfBranches = 4, splitters:   4.40  2.20  0.00
+ININ J org done, groupCount =       78
+TIIN J org took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+TIIN Generate group multipoles took      0.01 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ totChargeWholeSystem =         10.00000000000
+ININ Generating multipole for each branch at top level, MAX_MULTIPOLE_DEGREE = 15
+TIIN Translate multipoles (step 1) took      0.01 usr cpu s       0.00 sys cpu s       0.00 wall s
+TIIN Translate multipoles (step 2) took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+TIIN mm_limits_init took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ job lists for J created OK, noOfJobs_J_standard =       10, noOfJobs_J_multipole =        0
+TIIN Creating job lists for J took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ execute_joblist_J_std_threaded, noOfThreads =  4
+ININ 4 threads started OK.
+ININ all 4 threads have finished.
+TIIN execute_joblist_J_std_threaded took      0.01 usr cpu s       0.00 sys cpu s       0.01 wall s
+TIIN sort_list_of_multipole_jobs took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ execute_joblist_J_fmm_shared: Allocating multipoleList_4, maxnoOfMinimalDistrsPerBoxBranch =       233
+ININ execute_joblist_J_fmm_shared: jobIndexLo =            0, jobIndexHi =            0
+ININ execute_joblist_J_fmm_shared: done!
+ININ execute_joblist_J_fmm_shared: Allocating multipoleList_4, maxnoOfMinimalDistrsPerBoxBranch =       233
+ININ execute_joblist_J_fmm_shared: jobIndexLo =            0, jobIndexHi =            0
+ININ execute_joblist_J_fmm_shared: done!
+ININ execute_joblist_J_fmm_shared: Allocating multipoleList_4, maxnoOfMinimalDistrsPerBoxBranch =       233
+ININ execute_joblist_J_fmm_shared: jobIndexLo =            0, jobIndexHi =            0
+ININ execute_joblist_J_fmm_shared: done!
+ININ execute_joblist_J_fmm_shared: Allocating multipoleList_4, maxnoOfMinimalDistrsPerBoxBranch =       233
+ININ execute_joblist_J_fmm_shared: jobIndexLo =            0, jobIndexHi =            0
+ININ execute_joblist_J_fmm_shared: done!
+ININ multipole job list for J executed, largest L used:  0
+TIIN Executing multipole job list for J took      0.02 usr cpu s       0.00 sys cpu s       0.01 wall s
+ININ compute_J_by_boxes_linear ending OK.
+TIIN compute_J_by_boxes_linear took      0.05 usr cpu s       0.00 sys cpu s       0.03 wall s
+TISC compute_J_by_boxes_sparse total took      0.06 usr cpu s       0.00 sys cpu s       0.03 wall s
+ININ entering create_CSR_for_K, no of basis funcs =     7, threshold_K =   1e-06
+ININ create_box_system end OK, toplevelBoxSize:   7.0, #levels:  1, #boxes at top level:      1
+ININ create_box_system end OK, toplevelBoxSize:   7.0, #levels:  1, #boxes at top level:      1
+ININ create_box_system end OK, toplevelBoxSize:   7.0, #levels:  1, #boxes at top level:      1
+TIIN create_CSR_for_K getting list of distrs took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ list of neighbors complete.
+TIIN create_CSR_for_K getting list of neighbors took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+TIIN create_CSR_for_K sort each list of neighbors took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ 4 threads started OK.
+TIIN identify_needed_elements() took      0.03 usr cpu s       0.00 sys cpu s       0.01 wall s
+ININ computing nnz..
+ININ create_CSR_for_K: predicted nnz =           28, <->  57.14% of a full matrix
+TIIN create_CSR_for_K last part took     -0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+TIIN create_CSR_for_K total took      0.03 usr cpu s       0.00 sys cpu s       0.02 wall s
+TIIN mm_limits_init took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ entering compute_K_by_boxes, no of basis funcs =     7, threshold_K =   1e-06, exchange_box_size =   5.00
+ININ create_box_system end OK, toplevelBoxSize:   7.0, #levels:  1, #boxes at top level:      1
+ININ create_box_system end OK, toplevelBoxSize:   7.0, #levels:  1, #boxes at top level:      1
+ININ create_box_system end OK, toplevelBoxSize:   7.0, #levels:  1, #boxes at top level:      1
+TIIN Compute extent for all distrs took      0.01 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ Creating list of distributions done, distrCountTot =       303
+TIIN Creating list of distributions took      0.01 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ create_box_system end OK, toplevelBoxSize:   5.0, #levels:  1, #boxes at top level:      1
+ININ create_box_system end OK, toplevelBoxSize:   2.5, #levels:  2, #boxes at top level:      2
+ININ noOfLevelsBasisFuncs = 2, noOfLevelsDiff = 1
+TIIN Creating boxes etc took     -0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+TIIN getting multipoleNormVectorList took     -0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ starting loop to setup basisFuncGroupInfoList, with added index checks.
+TIIN GetLimitsAllLevels took     -0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+TIIN K organize_distributions for all boxes took      0.01 usr cpu s       0.00 sys cpu s       0.00 wall s
+TIIN Generate multipole limits for each group and for each box took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+INSC getDmatLimitMatrixCSRList start.
+TIIN getting densityMatrixLimitMatrixList took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ job list for K created,        1 jobs
+TIIN creating job list for K took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ execute_joblist_K_threaded, noOfThreads =  4, basisFuncListCount_max =     7
+ININ 4 threads started OK.
+ININ all 4 threads have finished, took        0 wall s.
+TIIN Executing job list for K took      0.04 usr cpu s       0.00 sys cpu s       0.01 wall s
+TIIN compute_K_by_boxes took      0.06 usr cpu s       0.00 sys cpu s       0.02 wall s
+TISC compute_K_by_boxes_sparse total took      0.09 usr cpu s       0.00 sys cpu s       0.04 wall s
+INSC About to truncate FockMatrix, gap of Fprev >= -20000000000000000000000.00000000000
+TISC symmMatrix::mixed_diff for F vs Fprev maxEigValMovement_mixed took      0.06 usr cpu s       0.00 sys cpu s       0.03 wall s
+TISC symmMatrix::eucl_diff  for F vs Fprev maxEigValMovement_eucl  took      0.42 usr cpu s       0.00 sys cpu s       0.17 wall s
+INSC maxEigValMovement_frob  =         23.45965687269
+INSC maxEigValMovement_mixed =         23.45965688317
+INSC maxEigValMovement_eucl  =         23.28786828945
+TISC FockMatrix.eucl_thresh() (with Z) took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+INSC Truncated FockMatrix (eucl with Z), selected threshold =      5e-09, returned error =          0, nnz before = 100.0000 %, nnz after = 100.0000 %
+INSC Computing Euclidean norm of FockMatrix...
+TISC FockMatrix.eucl() took      0.04 usr cpu s       0.00 sys cpu s       0.02 wall s
+INSC Euclidean norm of FockMatrix =         23.28786827898
+INSC Matrix 'S' ( symm ): n =      7, nnz =           49 <-> 100.00 %, mem usage  0.0000 G
+INSC Matrix 'F' ( symm ): n =      7, nnz =           49 <-> 100.00 %, mem usage  0.0000 G
+INSC Matrix 'D' ( symm ): n =      7, nnz =           49 <-> 100.00 %, mem usage  0.0000 G
+INSC nuclearEnergy, energy_2el, energy = 8.792989, 33.015049, -64.259585
+INSC Energy   1 =        -64.25958532416
+INSC calling compute_FDSminusSDF_sparse, n = 7
+INDE compute_FDSminusSDF_sparse() start.
+TIDE FileWritable::writeAndReadAll took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+INDE writeAndReadAll: '0 MB (1 MatrixGeneral, 0 > 1 MB) + 0 MB (6 MatrixSymmetric, 0 > 1 MB) + 0 MB (2 VectorGeneral, 0 > 1 MB) = 0 MB (9 total, 0 > 1 MB)
+TISC compute_FDSminusSDF_sparse, F*D mult took      0.01 usr cpu s       0.00 sys cpu s       0.00 wall s
+INSC Matrix 'FD before eucl truncation' (normal): n =      7, nnz =           49 <-> 100.00 %, mem usage  0.0000 G
+INSC Matrix 'FD after  eucl truncation' (normal): n =      7, nnz =           49 <-> 100.00 %, mem usage  0.0000 G
+INSC Matrix 'FDS before eucl truncation' (normal): n =      7, nnz =           49 <-> 100.00 %, mem usage  0.0000 G
+INSC Matrix 'FDS after  eucl truncation' (normal): n =      7, nnz =           49 <-> 100.00 %, mem usage  0.0000 G
+INSC compute_FDSminusSDF_sparse ending OK.
+TISC compute_FDSminusSDF_sparse took      0.02 usr cpu s       0.00 sys cpu s       0.01 wall s
+INSC Matrix 'FDS-SDF' (normal): n =      7, nnz =           49 <-> 100.00 %, mem usage  0.0000 G
+INSC SCF_restricted::get_FDSminusSDF finished.
+TISC get_FDSminusSDF took      0.02 usr cpu s       0.00 sys cpu s       0.01 wall s
+INSC maxabs FDS-SDF is     7.69
+INSC frob   FDS-SDF is     15.1
+TISC get_error_measure took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+INSC entering DIISManagerRestricted::AddIterationToList, IterCount =  0
+INSC DIISManagerRestricted::AddIterationToList ending OK.
+TISC DIISManagerRestricted::AddIterationToList took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+TISC clear_error_matrices took      0.00 usr cpu s      -0.00 sys cpu s       0.00 wall s
+TISC save_current_fock_as_fprev took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+INSC get_dens_from_fock_general, n = 7, use_diagonalization = 0, use_diag_on_error = 1
+INSC calling get_dens_from_fock_sparse, n =      7, subspaceErrorLimit = 1e-06, eigvalueErrorLimit = 1e-08
+INDE get_dens_from_fock_sparse() start!
+TIDE FileWritable::writeAndReadAll took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+INDE writeAndReadAll sizesStr: '0 MB (1 MatrixGeneral, 0 > 1 MB) + 0 MB (5 MatrixSymmetric, 0 > 1 MB) + 0 MB (2 VectorGeneral, 0 > 1 MB) = 0 MB (8 total, 0 > 1 MB)
+TIDE F = transpose(invCholFactor) * F * invCholFactor took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+TIDE symmMatrix::mixed_diff for maxEigValMovement_mixed took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+TIDE symmMatrix::eucl_diff  for maxEigValMovement_eucl  took      0.01 usr cpu s       0.00 sys cpu s       0.01 wall s
+INDE maxEigValMovement_frob  =         21.69068520008
+INDE maxEigValMovement_mixed =         21.69068521056
+INDE maxEigValMovement_eucl  =         21.58096807991
+INDE Truncating F_ort ( mixed ), selected threshold =      5e-09
+INDE Truncated F_ort ( mixed ), selected threshold =      5e-09, returned error =          0, nnz before = 100.0000 %, nnz after = 100.0000 %
+TIDE Truncation of F_ort took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+INDE getAllEigsInterval, use_rand_perturbation = 0
+TIDE getAllEigsInterval took      0.04 usr cpu s       0.00 sys cpu s       0.04 wall s
+INDE allEigsInterval : [  -21.581070425774    0.365861048835 ]
+INDE creating puriInfo object with n =      7, nocc =      5, maxMul = 100, subspaceErrorLimit =  7e-07, eigvalueErrorLimit =  7e-09
+INDE calling purification.purify(), number of threads = 4, trunc norm 'mixed'
+TIDE purification.purify() took      0.26 usr cpu s       0.01 sys cpu s       0.26 wall s
+TIDE Accumulated wall times for writeToFile in purify()          : 0.00013 s (VectorGeneral) = 0.00013 s
+TIDE Accumulated wall times for readFromFile in purify()         : 1.2e-05 s (VectorGeneral) = 1.2e-05 s
+TIDE Accumulated wall times for copy and assign in purify()      : 0.00026 s (VectorGeneral) = 0.00026 s
+INDE Number of calls to writeToFile in purify()                  : 58 (VectorGeneral) = 58 
+INDE Number of calls to readFromFile in purify()                 : 20 (VectorGeneral) = 20 
+INDE Number of calls to FileWritable copy and assign in purify() : 51 (VectorGeneral) = 51 
+TIDE mat::Gblas::time after purification :     0.000000
+INDE Purification finished,  16 multiplications.
+INDE Purification converged OK, subspaceError <=          0.00000000000
+INDE X :  min 100.0 %  max 100.0 %  avg 100.0 %  miniter   0  maxiter   0
+INDE X2:  min 100.0 %  max 100.0 %  avg 100.0 %  miniter   0  maxiter   0
+INDE E(LUMO) - E(HOMO) >=          0.98244875384 =         26.73315393772 eV
+INDE E(LUMO) - E(HOMO) <=          0.98244989471 =         26.73318498170 eV
+INDE HOMO interval : [   -0.693683560904   -0.693682420133 ]
+INDE LUMO interval : [    0.288766333709    0.288766333810 ]
+INDE Trace of resulting density matrix is          5.00000000002, error is   0.00000000001529.
+INDE Truncated D_ort ( mixed ), selected threshold =    1.5e-09, returned error =          0, nnz before = 100.0000 %, nnz after = 100.0000 %
+TIDE FileWritable::writeAndReadAll took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+INDE writeAndReadAll sizesStr: '0 MB (1 MatrixGeneral, 0 > 1 MB) + 0 MB (6 MatrixSymmetric, 0 > 1 MB) + 0 MB (1 MatrixTriangular, 0 > 1 MB) + 0 MB (2 VectorGeneral, 0 > 1 MB) = 0 MB (10 total, 0 > 1 MB)
+TIDE resultDens = invCholFactor * resultDens * transpose(invCholFactor) took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+INDE Truncated D_S (eucl with Z), selected threshold =    1.5e-09, returned error =          0, nnz before = 100.0000 %, nnz after = 100.0000 %
+INDE get_dens_from_fock_sparse ending OK
+TIDE get_dens_from_fock_sparse took      0.32 usr cpu s       0.02 sys cpu s       0.32 wall s
+ERSC get_dens_from_fock_sparse finished OK.
+INSC Matrix 'new density matrix' ( symm ): n =      7, nnz =           49 <-> 100.00 %, mem usage  0.0000 G
+INSC Tr( D * S ) =         10.00000000003
+TISC get_new_density_matrix took      0.32 usr cpu s       0.02 sys cpu s       0.32 wall s
+INMA ddf_writeShellListAndDensityMatricesToFile_sparse, n =      7, densityMatrixList[0].nvalues =          28
+INMA opened temporary file 'density.bin.vzSFu1' for writing
+INMA Choosing matrixStorageType = MATRIX_STORAGE_TYPE_TRIANGLE.
+INMA fileSize =            2952 bytes =      0.003 MegaBytes
+INMA renamed file 'density.bin.vzSFu1' to 'density.bin'
+INMA ddf_writeShellListAndDensityMatricesToFile_sparse freeing buffer.
+INMA ddf_writeShellListAndDensityMatricesToFile_sparse returning OK.
+TISC write_density_to_file took      0.00 usr cpu s       0.00 sys cpu s       0.03 wall s
+INSC SCF cycle   1 finished.
+TISC SCF cycle   1 took      1.00 usr cpu s       0.02 sys cpu s       0.65 wall s
+INSC Beginning of SCF cycle 2:  Wed Oct  2 12:35:44 2013
+INDE compute_J_by_boxes_sparse() start.
+TIDE FileWritable::writeAndReadAll took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+INDE writeAndReadAll: '0 MB (1 MatrixGeneral, 0 > 1 MB) + 0 MB (7 MatrixSymmetric, 0 > 1 MB) + 0 MB (2 VectorGeneral, 0 > 1 MB) = 0 MB (10 total, 0 > 1 MB)
+INSC compute_J_by_boxes_sparse, maxDensityMatrixElement =          2.10517140667
+ININ get_basis_func_pair_list, n =      7
+ININ create_box_system end OK, toplevelBoxSize:   7.0, #levels:  1, #boxes at top level:      1
+TIIN get_basis_func_pair_list_2el took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+INSC compute_J_by_boxes_sparse: noOfBasisFuncIndexPairs = 28 ==> storing  57.14 % of a full matrix
+ININ entering compute_J_by_boxes_linear, no of basis funcs =     7, threshold_J =   1e-06
+ININ use_fmm = 1, fmm_box_size =   4.40
+TIIN Compute extent for all distrs took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ extent_min =    0.129, extent_max =    5.542
+ININ Creating list of distributions etc done, distrCount =       303
+TIIN Creating list of distributions etc took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ create_box_system end OK, toplevelBoxSize:   4.4, #levels:  1, #boxes at top level:      1
+TIIN Creating boxes took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ noOfBranches = 4, splitters:   4.40  2.20  0.00
+ININ J org done, groupCount =       78
+TIIN J org took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+TIIN Generate group multipoles took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ totChargeWholeSystem =         10.00000000518
+ININ Generating multipole for each branch at top level, MAX_MULTIPOLE_DEGREE = 15
+TIIN Translate multipoles (step 1) took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+TIIN Translate multipoles (step 2) took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+TIIN mm_limits_init took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ job lists for J created OK, noOfJobs_J_standard =       10, noOfJobs_J_multipole =        0
+TIIN Creating job lists for J took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ execute_joblist_J_std_threaded, noOfThreads =  4
+ININ 4 threads started OK.
+ININ all 4 threads have finished.
+TIIN execute_joblist_J_std_threaded took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+TIIN sort_list_of_multipole_jobs took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ execute_joblist_J_fmm_shared: Allocating multipoleList_4, maxnoOfMinimalDistrsPerBoxBranch =       230
+ININ execute_joblist_J_fmm_shared: Allocating multipoleList_4, maxnoOfMinimalDistrsPerBoxBranch =       230
+ININ execute_joblist_J_fmm_shared: jobIndexLo =            0, jobIndexHi =            0
+ININ execute_joblist_J_fmm_shared: Allocating multipoleList_4, maxnoOfMinimalDistrsPerBoxBranch =       230
+ININ execute_joblist_J_fmm_shared: jobIndexLo =            0, jobIndexHi =            0
+ININ execute_joblist_J_fmm_shared: Allocating multipoleList_4, maxnoOfMinimalDistrsPerBoxBranch =       230
+ININ execute_joblist_J_fmm_shared: done!
+ININ execute_joblist_J_fmm_shared: jobIndexLo =            0, jobIndexHi =            0
+ININ execute_joblist_J_fmm_shared: done!
+ININ execute_joblist_J_fmm_shared: jobIndexLo =            0, jobIndexHi =            0
+ININ execute_joblist_J_fmm_shared: done!
+ININ execute_joblist_J_fmm_shared: done!
+ININ multipole job list for J executed, largest L used:  0
+TIIN Executing multipole job list for J took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ compute_J_by_boxes_linear ending OK.
+TIIN compute_J_by_boxes_linear took      0.01 usr cpu s       0.00 sys cpu s       0.01 wall s
+TISC compute_J_by_boxes_sparse total took      0.02 usr cpu s       0.00 sys cpu s       0.02 wall s
+ININ entering create_CSR_for_K, no of basis funcs =     7, threshold_K =   1e-06
+ININ create_box_system end OK, toplevelBoxSize:   7.0, #levels:  1, #boxes at top level:      1
+ININ create_box_system end OK, toplevelBoxSize:   7.0, #levels:  1, #boxes at top level:      1
+ININ create_box_system end OK, toplevelBoxSize:   7.0, #levels:  1, #boxes at top level:      1
+TIIN create_CSR_for_K getting list of distrs took     -0.00 usr cpu s      -0.00 sys cpu s       0.00 wall s
+ININ list of neighbors complete.
+TIIN create_CSR_for_K getting list of neighbors took     -0.00 usr cpu s      -0.00 sys cpu s       0.00 wall s
+TIIN create_CSR_for_K sort each list of neighbors took     -0.00 usr cpu s      -0.00 sys cpu s       0.00 wall s
+ININ 4 threads started OK.
+TIIN identify_needed_elements() took     -0.00 usr cpu s      -0.00 sys cpu s       0.00 wall s
+ININ computing nnz..
+ININ create_CSR_for_K: predicted nnz =           28, <->  57.14% of a full matrix
+TIIN create_CSR_for_K last part took     -0.00 usr cpu s      -0.00 sys cpu s       0.00 wall s
+TIIN create_CSR_for_K total took     -0.00 usr cpu s      -0.00 sys cpu s       0.00 wall s
+TIIN mm_limits_init took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ entering compute_K_by_boxes, no of basis funcs =     7, threshold_K =   1e-06, exchange_box_size =   5.00
+ININ create_box_system end OK, toplevelBoxSize:   7.0, #levels:  1, #boxes at top level:      1
+ININ create_box_system end OK, toplevelBoxSize:   7.0, #levels:  1, #boxes at top level:      1
+ININ create_box_system end OK, toplevelBoxSize:   7.0, #levels:  1, #boxes at top level:      1
+TIIN Compute extent for all distrs took     -0.00 usr cpu s      -0.00 sys cpu s       0.00 wall s
+ININ Creating list of distributions done, distrCountTot =       303
+TIIN Creating list of distributions took     -0.00 usr cpu s      -0.00 sys cpu s       0.00 wall s
+ININ create_box_system end OK, toplevelBoxSize:   5.0, #levels:  1, #boxes at top level:      1
+ININ create_box_system end OK, toplevelBoxSize:   2.5, #levels:  2, #boxes at top level:      2
+ININ noOfLevelsBasisFuncs = 2, noOfLevelsDiff = 1
+TIIN Creating boxes etc took     -0.00 usr cpu s      -0.00 sys cpu s       0.00 wall s
+TIIN getting multipoleNormVectorList took     -0.00 usr cpu s      -0.00 sys cpu s       0.00 wall s
+ININ starting loop to setup basisFuncGroupInfoList, with added index checks.
+TIIN GetLimitsAllLevels took     -0.00 usr cpu s      -0.00 sys cpu s       0.00 wall s
+TIIN K organize_distributions for all boxes took     -0.00 usr cpu s      -0.00 sys cpu s       0.00 wall s
+TIIN Generate multipole limits for each group and for each box took      0.00 usr cpu s      -0.00 sys cpu s       0.00 wall s
+INSC getDmatLimitMatrixCSRList start.
+TIIN getting densityMatrixLimitMatrixList took      0.00 usr cpu s      -0.00 sys cpu s       0.00 wall s
+ININ job list for K created,        1 jobs
+TIIN creating job list for K took      0.00 usr cpu s      -0.00 sys cpu s       0.00 wall s
+ININ execute_joblist_K_threaded, noOfThreads =  4, basisFuncListCount_max =     7
+ININ 4 threads started OK.
+ININ all 4 threads have finished, took        0 wall s.
+TIIN Executing job list for K took      0.00 usr cpu s      -0.00 sys cpu s       0.00 wall s
+TIIN compute_K_by_boxes took      0.01 usr cpu s      -0.00 sys cpu s       0.01 wall s
+TISC compute_K_by_boxes_sparse total took      0.01 usr cpu s       0.00 sys cpu s       0.01 wall s
+INSC About to truncate FockMatrix, gap of Fprev >=          0.98244875384
+TISC symmMatrix::mixed_diff for F vs Fprev maxEigValMovement_mixed took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+TISC symmMatrix::eucl_diff  for F vs Fprev maxEigValMovement_eucl  took      0.03 usr cpu s       0.00 sys cpu s       0.05 wall s
+INSC maxEigValMovement_frob  =          2.56515582352
+INSC maxEigValMovement_mixed =          2.56515583400
+INSC maxEigValMovement_eucl  =          2.17864125389
+TISC FockMatrix.eucl_thresh() (with Z) took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+INSC Truncated FockMatrix (eucl with Z), selected threshold =      5e-09, returned error =          0, nnz before = 100.0000 %, nnz after = 100.0000 %
+INSC Computing Euclidean norm of FockMatrix...
+TISC FockMatrix.eucl() took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+INSC Euclidean norm of FockMatrix =         21.13766891946
+INSC Matrix 'S' ( symm ): n =      7, nnz =           49 <-> 100.00 %, mem usage  0.0000 G
+INSC Matrix 'F' ( symm ): n =      7, nnz =           49 <-> 100.00 %, mem usage  0.0000 G
+INSC Matrix 'D' ( symm ): n =      7, nnz =           49 <-> 100.00 %, mem usage  0.0000 G
+INSC nuclearEnergy, energy_2el, energy = 8.792989, 40.915920, -74.690762
+INSC Energy   2 =        -74.69076164215
+INSC calling compute_FDSminusSDF_sparse, n = 7
+INDE compute_FDSminusSDF_sparse() start.
+TIDE FileWritable::writeAndReadAll took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+INDE writeAndReadAll: '0 MB (1 MatrixGeneral, 0 > 1 MB) + 0 MB (6 MatrixSymmetric, 0 > 1 MB) + 0 MB (2 VectorGeneral, 0 > 1 MB) = 0 MB (9 total, 0 > 1 MB)
+TISC compute_FDSminusSDF_sparse, F*D mult took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+INSC Matrix 'FD before eucl truncation' (normal): n =      7, nnz =           49 <-> 100.00 %, mem usage  0.0000 G
+INSC Matrix 'FD after  eucl truncation' (normal): n =      7, nnz =           49 <-> 100.00 %, mem usage  0.0000 G
+INSC Matrix 'FDS before eucl truncation' (normal): n =      7, nnz =           49 <-> 100.00 %, mem usage  0.0000 G
+INSC Matrix 'FDS after  eucl truncation' (normal): n =      7, nnz =           49 <-> 100.00 %, mem usage  0.0000 G
+INSC compute_FDSminusSDF_sparse ending OK.
+TISC compute_FDSminusSDF_sparse took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+INSC Matrix 'FDS-SDF' (normal): n =      7, nnz =           49 <-> 100.00 %, mem usage  0.0000 G
+INSC SCF_restricted::get_FDSminusSDF finished.
+TISC get_FDSminusSDF took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+INSC maxabs FDS-SDF is    0.376
+INSC frob   FDS-SDF is    0.887
+TISC get_error_measure took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+INSC entering DIISManagerRestricted::AddIterationToList, IterCount =  1
+INSC DIISManagerRestricted::AddIterationToList ending OK.
+TISC DIISManagerRestricted::AddIterationToList took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+INSC using DIIS to get combined Fock matrix, number of iters used for DIIS:  2
+TISC clear_error_matrices took     -0.00 usr cpu s      -0.00 sys cpu s       0.00 wall s
+TISC save_current_fock_as_fprev took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+INSC get_dens_from_fock_general, n = 7, use_diagonalization = 0, use_diag_on_error = 1
+INSC calling get_dens_from_fock_sparse, n =      7, subspaceErrorLimit = 1e-06, eigvalueErrorLimit = 1e-08
+INDE get_dens_from_fock_sparse() start!
+TIDE FileWritable::writeAndReadAll took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+INDE writeAndReadAll sizesStr: '0 MB (1 MatrixGeneral, 0 > 1 MB) + 0 MB (5 MatrixSymmetric, 0 > 1 MB) + 0 MB (2 VectorGeneral, 0 > 1 MB) = 0 MB (8 total, 0 > 1 MB)
+TIDE F = transpose(invCholFactor) * F * invCholFactor took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+TIDE symmMatrix::mixed_diff for maxEigValMovement_mixed took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+TIDE symmMatrix::eucl_diff  for maxEigValMovement_eucl  took      0.01 usr cpu s       0.00 sys cpu s       0.02 wall s
+INDE maxEigValMovement_frob  =          2.38022231755
+INDE maxEigValMovement_mixed =          2.38022232802
+INDE maxEigValMovement_eucl  =          1.93428527272
+INDE Truncating F_ort ( mixed ), selected threshold =      5e-09
+INDE Truncated F_ort ( mixed ), selected threshold =      5e-09, returned error =          0, nnz before = 100.0000 %, nnz after = 100.0000 %
+TIDE Truncation of F_ort took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+INDE getAllEigsInterval, use_rand_perturbation = 0
+TIDE getAllEigsInterval took      0.09 usr cpu s       0.00 sys cpu s       0.10 wall s
+INDE allEigsInterval : [  -19.649513503770    0.792449910699 ]
+INDE creating puriInfo object with n =      7, nocc =      5, maxMul = 100, subspaceErrorLimit =  7e-07, eigvalueErrorLimit =  7e-09
+INDE calling purification.purify(), number of threads = 4, trunc norm 'mixed'
+TIDE purification.purify() took      0.18 usr cpu s       0.01 sys cpu s       0.19 wall s
+TIDE Accumulated wall times for writeToFile in purify()          : 0.00011 s (VectorGeneral) = 0.00011 s
+TIDE Accumulated wall times for readFromFile in purify()         : 1e-05 s (VectorGeneral) = 1e-05 s
+TIDE Accumulated wall times for copy and assign in purify()      : 0.0002 s (VectorGeneral) = 0.0002 s
+INDE Number of calls to writeToFile in purify()                  : 48 (VectorGeneral) = 48 
+INDE Number of calls to readFromFile in purify()                 : 16 (VectorGeneral) = 16 
+INDE Number of calls to FileWritable copy and assign in purify() : 41 (VectorGeneral) = 41 
+TIDE mat::Gblas::time after purification :     0.010000
+INDE Purification finished,  18 multiplications.
+INDE Purification converged OK, subspaceError <=          0.00000000000
+INDE X :  min 100.0 %  max 100.0 %  avg 100.0 %  miniter   0  maxiter   0
+INDE X2:  min 100.0 %  max 100.0 %  avg 100.0 %  miniter   0  maxiter   0
+INDE E(LUMO) - E(HOMO) >=          0.72303156433 =         19.67422121048 eV
+INDE E(LUMO) - E(HOMO) <=          0.72303156916 =         19.67422134186 eV
+INDE HOMO interval : [   -0.089497265809   -0.089497260983 ]
+INDE LUMO interval : [    0.633534303347    0.633534303349 ]
+INDE Trace of resulting density matrix is          5.00000000000, error is   0.00000000000012.
+INDE Truncated D_ort ( mixed ), selected threshold =    1.5e-09, returned error =          0, nnz before = 100.0000 %, nnz after = 100.0000 %
+TIDE FileWritable::writeAndReadAll took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+INDE writeAndReadAll sizesStr: '0 MB (1 MatrixGeneral, 0 > 1 MB) + 0 MB (6 MatrixSymmetric, 0 > 1 MB) + 0 MB (1 MatrixTriangular, 0 > 1 MB) + 0 MB (2 VectorGeneral, 0 > 1 MB) = 0 MB (10 total, 0 > 1 MB)
+TIDE resultDens = invCholFactor * resultDens * transpose(invCholFactor) took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+INDE Truncated D_S (eucl with Z), selected threshold =    1.5e-09, returned error =          0, nnz before = 100.0000 %, nnz after = 100.0000 %
+INDE get_dens_from_fock_sparse ending OK
+TIDE get_dens_from_fock_sparse took      0.28 usr cpu s       0.02 sys cpu s       0.31 wall s
+ERSC get_dens_from_fock_sparse finished OK.
+INSC Matrix 'new density matrix' ( symm ): n =      7, nnz =           49 <-> 100.00 %, mem usage  0.0000 G
+INSC Tr( D * S ) =         10.00000000000
+TISC get_new_density_matrix took      0.28 usr cpu s       0.02 sys cpu s       0.31 wall s
+INSC SCF_restricted::report_density_difference, diff_eucl =          0.73862254311
+TISC SCF_restricted::report_density_difference took      0.00 usr cpu s       0.00 sys cpu s       0.01 wall s
+INMA ddf_writeShellListAndDensityMatricesToFile_sparse, n =      7, densityMatrixList[0].nvalues =          28
+INMA opened temporary file 'density.bin.cuKXf2' for writing
+INMA Choosing matrixStorageType = MATRIX_STORAGE_TYPE_TRIANGLE.
+INMA fileSize =            2952 bytes =      0.003 MegaBytes
+INMA renamed file 'density.bin.cuKXf2' to 'density.bin'
+INMA ddf_writeShellListAndDensityMatricesToFile_sparse freeing buffer.
+INMA ddf_writeShellListAndDensityMatricesToFile_sparse returning OK.
+TISC write_density_to_file took      0.00 usr cpu s       0.00 sys cpu s       0.03 wall s
+INSC SCF cycle   2 finished.
+TISC SCF cycle   2 took      0.34 usr cpu s       0.02 sys cpu s       0.42 wall s
+INSC Beginning of SCF cycle 3:  Wed Oct  2 12:35:45 2013
+INDE compute_J_by_boxes_sparse() start.
+TIDE FileWritable::writeAndReadAll took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+INDE writeAndReadAll: '0 MB (1 MatrixGeneral, 0 > 1 MB) + 0 MB (7 MatrixSymmetric, 0 > 1 MB) + 0 MB (2 VectorGeneral, 0 > 1 MB) = 0 MB (10 total, 0 > 1 MB)
+INSC compute_J_by_boxes_sparse, maxDensityMatrixElement =          2.10262221416
+ININ get_basis_func_pair_list, n =      7
+ININ create_box_system end OK, toplevelBoxSize:   7.0, #levels:  1, #boxes at top level:      1
+TIIN get_basis_func_pair_list_2el took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+INSC compute_J_by_boxes_sparse: noOfBasisFuncIndexPairs = 28 ==> storing  57.14 % of a full matrix
+ININ entering compute_J_by_boxes_linear, no of basis funcs =     7, threshold_J =   1e-06
+ININ use_fmm = 1, fmm_box_size =   4.40
+TIIN Compute extent for all distrs took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ extent_min =    0.129, extent_max =    5.542
+ININ Creating list of distributions etc done, distrCount =       303
+TIIN Creating list of distributions etc took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ create_box_system end OK, toplevelBoxSize:   4.4, #levels:  1, #boxes at top level:      1
+TIIN Creating boxes took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ noOfBranches = 4, splitters:   4.40  2.20  0.00
+ININ J org done, groupCount =       78
+TIIN J org took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+TIIN Generate group multipoles took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ totChargeWholeSystem =         10.00000000497
+ININ Generating multipole for each branch at top level, MAX_MULTIPOLE_DEGREE = 15
+TIIN Translate multipoles (step 1) took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+TIIN Translate multipoles (step 2) took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+TIIN mm_limits_init took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ job lists for J created OK, noOfJobs_J_standard =       10, noOfJobs_J_multipole =        0
+TIIN Creating job lists for J took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ execute_joblist_J_std_threaded, noOfThreads =  4
+ININ 4 threads started OK.
+ININ all 4 threads have finished.
+TIIN execute_joblist_J_std_threaded took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+TIIN sort_list_of_multipole_jobs took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ execute_joblist_J_fmm_shared: Allocating multipoleList_4, maxnoOfMinimalDistrsPerBoxBranch =       230
+ININ execute_joblist_J_fmm_shared: jobIndexLo =            0, jobIndexHi =            0
+ININ execute_joblist_J_fmm_shared: Allocating multipoleList_4, maxnoOfMinimalDistrsPerBoxBranch =       230
+ININ execute_joblist_J_fmm_shared: jobIndexLo =            0, jobIndexHi =            0
+ININ execute_joblist_J_fmm_shared: Allocating multipoleList_4, maxnoOfMinimalDistrsPerBoxBranch =       230
+ININ execute_joblist_J_fmm_shared: Allocating multipoleList_4, maxnoOfMinimalDistrsPerBoxBranch =       230
+ININ execute_joblist_J_fmm_shared: jobIndexLo =            0, jobIndexHi =            0
+ININ execute_joblist_J_fmm_shared: done!
+ININ execute_joblist_J_fmm_shared: jobIndexLo =            0, jobIndexHi =            0
+ININ execute_joblist_J_fmm_shared: done!
+ININ execute_joblist_J_fmm_shared: done!
+ININ execute_joblist_J_fmm_shared: done!
+ININ multipole job list for J executed, largest L used:  0
+TIIN Executing multipole job list for J took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ compute_J_by_boxes_linear ending OK.
+TIIN compute_J_by_boxes_linear took      0.01 usr cpu s       0.00 sys cpu s       0.01 wall s
+TISC compute_J_by_boxes_sparse total took      0.01 usr cpu s       0.00 sys cpu s       0.01 wall s
+ININ entering create_CSR_for_K, no of basis funcs =     7, threshold_K =   1e-06
+ININ create_box_system end OK, toplevelBoxSize:   7.0, #levels:  1, #boxes at top level:      1
+ININ create_box_system end OK, toplevelBoxSize:   7.0, #levels:  1, #boxes at top level:      1
+ININ create_box_system end OK, toplevelBoxSize:   7.0, #levels:  1, #boxes at top level:      1
+TIIN create_CSR_for_K getting list of distrs took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ list of neighbors complete.
+TIIN create_CSR_for_K getting list of neighbors took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+TIIN create_CSR_for_K sort each list of neighbors took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ 4 threads started OK.
+TIIN identify_needed_elements() took      0.00 usr cpu s       0.00 sys cpu s       0.01 wall s
+ININ computing nnz..
+ININ create_CSR_for_K: predicted nnz =           28, <->  57.14% of a full matrix
+TIIN create_CSR_for_K last part took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+TIIN create_CSR_for_K total took      0.00 usr cpu s       0.00 sys cpu s       0.01 wall s
+TIIN mm_limits_init took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ entering compute_K_by_boxes, no of basis funcs =     7, threshold_K =   1e-06, exchange_box_size =   5.00
+ININ create_box_system end OK, toplevelBoxSize:   7.0, #levels:  1, #boxes at top level:      1
+ININ create_box_system end OK, toplevelBoxSize:   7.0, #levels:  1, #boxes at top level:      1
+ININ create_box_system end OK, toplevelBoxSize:   7.0, #levels:  1, #boxes at top level:      1
+TIIN Compute extent for all distrs took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ Creating list of distributions done, distrCountTot =       303
+TIIN Creating list of distributions took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ create_box_system end OK, toplevelBoxSize:   5.0, #levels:  1, #boxes at top level:      1
+ININ create_box_system end OK, toplevelBoxSize:   2.5, #levels:  2, #boxes at top level:      2
+ININ noOfLevelsBasisFuncs = 2, noOfLevelsDiff = 1
+TIIN Creating boxes etc took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+TIIN getting multipoleNormVectorList took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ starting loop to setup basisFuncGroupInfoList, with added index checks.
+TIIN GetLimitsAllLevels took     -0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+TIIN K organize_distributions for all boxes took     -0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+TIIN Generate multipole limits for each group and for each box took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+INSC getDmatLimitMatrixCSRList start.
+TIIN getting densityMatrixLimitMatrixList took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ job list for K created,        1 jobs
+TIIN creating job list for K took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ execute_joblist_K_threaded, noOfThreads =  4, basisFuncListCount_max =     7
+ININ 4 threads started OK.
+ININ all 4 threads have finished, took        0 wall s.
+TIIN Executing job list for K took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+TIIN compute_K_by_boxes took      0.01 usr cpu s       0.00 sys cpu s       0.01 wall s
+TISC compute_K_by_boxes_sparse total took      0.01 usr cpu s       0.00 sys cpu s       0.02 wall s
+INSC About to truncate FockMatrix, gap of Fprev >=          0.72303156433
+TISC symmMatrix::mixed_diff for F vs Fprev maxEigValMovement_mixed took      0.01 usr cpu s       0.00 sys cpu s       0.01 wall s
+TISC symmMatrix::eucl_diff  for F vs Fprev maxEigValMovement_eucl  took      0.05 usr cpu s       0.00 sys cpu s       0.05 wall s
+INSC maxEigValMovement_frob  =          0.87033740142
+INSC maxEigValMovement_mixed =          0.87033741190
+INSC maxEigValMovement_eucl  =          0.68383773654
+TISC FockMatrix.eucl_thresh() (with Z) took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+INSC Truncated FockMatrix (eucl with Z), selected threshold =      5e-09, returned error =          0, nnz before = 100.0000 %, nnz after = 100.0000 %
+INSC Computing Euclidean norm of FockMatrix...
+TISC FockMatrix.eucl() took      0.03 usr cpu s       0.00 sys cpu s       0.04 wall s
+INSC Euclidean norm of FockMatrix =         21.82597332317
+INSC Matrix 'S' ( symm ): n =      7, nnz =           49 <-> 100.00 %, mem usage  0.0000 G
+INSC Matrix 'F' ( symm ): n =      7, nnz =           49 <-> 100.00 %, mem usage  0.0000 G
+INSC Matrix 'D' ( symm ): n =      7, nnz =           49 <-> 100.00 %, mem usage  0.0000 G
+INSC nuclearEnergy, energy_2el, energy = 8.792989, 37.737650, -74.959030
+INSC Energy   3 =        -74.95903017491  ( diff     -0.268268532764907 )
+INSC calling compute_FDSminusSDF_sparse, n = 7
+INDE compute_FDSminusSDF_sparse() start.
+TIDE FileWritable::writeAndReadAll took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+INDE writeAndReadAll: '0 MB (1 MatrixGeneral, 0 > 1 MB) + 0 MB (6 MatrixSymmetric, 0 > 1 MB) + 0 MB (2 VectorGeneral, 0 > 1 MB) = 0 MB (9 total, 0 > 1 MB)
+TISC compute_FDSminusSDF_sparse, F*D mult took      0.01 usr cpu s       0.00 sys cpu s       0.01 wall s
+INSC Matrix 'FD before eucl truncation' (normal): n =      7, nnz =           49 <-> 100.00 %, mem usage  0.0000 G
+INSC Matrix 'FD after  eucl truncation' (normal): n =      7, nnz =           49 <-> 100.00 %, mem usage  0.0000 G
+INSC Matrix 'FDS before eucl truncation' (normal): n =      7, nnz =           49 <-> 100.00 %, mem usage  0.0000 G
+INSC Matrix 'FDS after  eucl truncation' (normal): n =      7, nnz =           49 <-> 100.00 %, mem usage  0.0000 G
+INSC compute_FDSminusSDF_sparse ending OK.
+TISC compute_FDSminusSDF_sparse took      0.03 usr cpu s       0.00 sys cpu s       0.03 wall s
+INSC Matrix 'FDS-SDF' (normal): n =      7, nnz =           49 <-> 100.00 %, mem usage  0.0000 G
+INSC SCF_restricted::get_FDSminusSDF finished.
+TISC get_FDSminusSDF took      0.03 usr cpu s       0.00 sys cpu s       0.03 wall s
+INSC maxabs FDS-SDF is   0.0355
+INSC frob   FDS-SDF is    0.106
+TISC get_error_measure took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+INSC entering DIISManagerRestricted::AddIterationToList, IterCount =  2
+INSC DIISManagerRestricted::AddIterationToList ending OK.
+TISC DIISManagerRestricted::AddIterationToList took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+INSC using DIIS to get combined Fock matrix, number of iters used for DIIS:  3
+TISC clear_error_matrices took      0.00 usr cpu s      -0.00 sys cpu s       0.00 wall s
+TISC save_current_fock_as_fprev took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+INSC get_dens_from_fock_general, n = 7, use_diagonalization = 0, use_diag_on_error = 1
+INSC calling get_dens_from_fock_sparse, n =      7, subspaceErrorLimit = 1e-06, eigvalueErrorLimit = 1e-08
+INDE get_dens_from_fock_sparse() start!
+TIDE FileWritable::writeAndReadAll took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+INDE writeAndReadAll sizesStr: '0 MB (1 MatrixGeneral, 0 > 1 MB) + 0 MB (5 MatrixSymmetric, 0 > 1 MB) + 0 MB (2 VectorGeneral, 0 > 1 MB) = 0 MB (8 total, 0 > 1 MB)
+TIDE F = transpose(invCholFactor) * F * invCholFactor took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+TIDE symmMatrix::mixed_diff for maxEigValMovement_mixed took      0.02 usr cpu s       0.00 sys cpu s       0.04 wall s
+TIDE symmMatrix::eucl_diff  for maxEigValMovement_eucl  took      0.08 usr cpu s       0.00 sys cpu s       0.10 wall s
+INDE maxEigValMovement_frob  =          0.74874917871
+INDE maxEigValMovement_mixed =          0.74874918919
+INDE maxEigValMovement_eucl  =          0.58182957092
+INDE Truncating F_ort ( mixed ), selected threshold =      5e-09
+INDE Truncated F_ort ( mixed ), selected threshold =      5e-09, returned error =          0, nnz before = 100.0000 %, nnz after = 100.0000 %
+TIDE Truncation of F_ort took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+INDE getAllEigsInterval, use_rand_perturbation = 0
+TIDE getAllEigsInterval took      0.08 usr cpu s       0.00 sys cpu s       0.09 wall s
+INDE allEigsInterval : [  -20.228392557722    0.706700346969 ]
+INDE creating puriInfo object with n =      7, nocc =      5, maxMul = 100, subspaceErrorLimit =  7e-07, eigvalueErrorLimit =  7e-09
+INDE calling purification.purify(), number of threads = 4, trunc norm 'mixed'
+TIDE purification.purify() took      0.32 usr cpu s       0.03 sys cpu s       0.38 wall s
+TIDE Accumulated wall times for writeToFile in purify()          : 0.00028 s (VectorGeneral) = 0.00028 s
+TIDE Accumulated wall times for readFromFile in purify()         : 2.7e-05 s (VectorGeneral) = 2.7e-05 s
+TIDE Accumulated wall times for copy and assign in purify()      : 0.00026 s (VectorGeneral) = 0.00026 s
+INDE Number of calls to writeToFile in purify()                  : 61 (VectorGeneral) = 61 
+INDE Number of calls to readFromFile in purify()                 : 28 (VectorGeneral) = 28 
+INDE Number of calls to FileWritable copy and assign in purify() : 46 (VectorGeneral) = 46 
+TIDE mat::Gblas::time after purification :     0.000000
+INDE Purification finished,  18 multiplications.
+INDE Purification converged OK, subspaceError <=          0.00000000000
+INDE X :  min 100.0 %  max 100.0 %  avg 100.0 %  miniter   0  maxiter   0
+INDE X2:  min 100.0 %  max 100.0 %  avg 100.0 %  miniter   0  maxiter   0
+INDE E(LUMO) - E(HOMO) >=          0.93144305381 =         25.34525128593 eV
+INDE E(LUMO) - E(HOMO) <=          0.93189352372 =         25.35750890392 eV
+INDE HOMO interval : [   -0.378085898759   -0.377635428857 ]
+INDE LUMO interval : [    0.553807624951    0.553807624961 ]
+INDE Trace of resulting density matrix is          5.00000000000, error is  -0.00000000000000.
+INDE Truncated D_ort ( mixed ), selected threshold =    1.5e-09, returned error =          0, nnz before = 100.0000 %, nnz after = 100.0000 %
+TIDE FileWritable::writeAndReadAll took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+INDE writeAndReadAll sizesStr: '0 MB (1 MatrixGeneral, 0 > 1 MB) + 0 MB (6 MatrixSymmetric, 0 > 1 MB) + 0 MB (1 MatrixTriangular, 0 > 1 MB) + 0 MB (2 VectorGeneral, 0 > 1 MB) = 0 MB (10 total, 0 > 1 MB)
+TIDE resultDens = invCholFactor * resultDens * transpose(invCholFactor) took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+INDE Truncated D_S (eucl with Z), selected threshold =    1.5e-09, returned error =          0, nnz before = 100.0000 %, nnz after = 100.0000 %
+INDE get_dens_from_fock_sparse ending OK
+TIDE get_dens_from_fock_sparse took      0.49 usr cpu s       0.04 sys cpu s       0.61 wall s
+ERSC get_dens_from_fock_sparse finished OK.
+INSC Matrix 'new density matrix' ( symm ): n =      7, nnz =           49 <-> 100.00 %, mem usage  0.0000 G
+INSC Tr( D * S ) =         10.00000000000
+TISC get_new_density_matrix took      0.49 usr cpu s       0.04 sys cpu s       0.61 wall s
+INSC SCF_restricted::report_density_difference, diff_eucl =          0.08015776070
+TISC SCF_restricted::report_density_difference took      0.05 usr cpu s       0.01 sys cpu s       0.06 wall s
+INMA ddf_writeShellListAndDensityMatricesToFile_sparse, n =      7, densityMatrixList[0].nvalues =          28
+INMA opened temporary file 'density.bin.JJMl24' for writing
+INMA Choosing matrixStorageType = MATRIX_STORAGE_TYPE_TRIANGLE.
+INMA fileSize =            2952 bytes =      0.003 MegaBytes
+INMA renamed file 'density.bin.JJMl24' to 'density.bin'
+INMA ddf_writeShellListAndDensityMatricesToFile_sparse freeing buffer.
+INMA ddf_writeShellListAndDensityMatricesToFile_sparse returning OK.
+TISC write_density_to_file took      0.00 usr cpu s       0.00 sys cpu s       0.03 wall s
+INSC SCF cycle   3 finished.
+TISC SCF cycle   3 took      0.68 usr cpu s       0.05 sys cpu s       0.88 wall s
+INSC Beginning of SCF cycle 4:  Wed Oct  2 12:35:46 2013
+INDE compute_J_by_boxes_sparse() start.
+TIDE FileWritable::writeAndReadAll took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+INDE writeAndReadAll: '0 MB (1 MatrixGeneral, 0 > 1 MB) + 0 MB (7 MatrixSymmetric, 0 > 1 MB) + 0 MB (2 VectorGeneral, 0 > 1 MB) = 0 MB (10 total, 0 > 1 MB)
+INSC compute_J_by_boxes_sparse, maxDensityMatrixElement =          2.10534535128
+ININ get_basis_func_pair_list, n =      7
+ININ create_box_system end OK, toplevelBoxSize:   7.0, #levels:  1, #boxes at top level:      1
+TIIN get_basis_func_pair_list_2el took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+INSC compute_J_by_boxes_sparse: noOfBasisFuncIndexPairs = 28 ==> storing  57.14 % of a full matrix
+ININ entering compute_J_by_boxes_linear, no of basis funcs =     7, threshold_J =   1e-06
+ININ use_fmm = 1, fmm_box_size =   4.40
+TIIN Compute extent for all distrs took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ extent_min =    0.129, extent_max =    5.542
+ININ Creating list of distributions etc done, distrCount =       303
+TIIN Creating list of distributions etc took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ create_box_system end OK, toplevelBoxSize:   4.4, #levels:  1, #boxes at top level:      1
+TIIN Creating boxes took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ noOfBranches = 4, splitters:   4.40  2.20  0.00
+ININ J org done, groupCount =       78
+TIIN J org took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+TIIN Generate group multipoles took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ totChargeWholeSystem =         10.00000000423
+ININ Generating multipole for each branch at top level, MAX_MULTIPOLE_DEGREE = 15
+TIIN Translate multipoles (step 1) took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+TIIN Translate multipoles (step 2) took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+TIIN mm_limits_init took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ job lists for J created OK, noOfJobs_J_standard =       10, noOfJobs_J_multipole =        0
+TIIN Creating job lists for J took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ execute_joblist_J_std_threaded, noOfThreads =  4
+ININ 4 threads started OK.
+ININ all 4 threads have finished.
+TIIN execute_joblist_J_std_threaded took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+TIIN sort_list_of_multipole_jobs took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ execute_joblist_J_fmm_shared: Allocating multipoleList_4, maxnoOfMinimalDistrsPerBoxBranch =       230
+ININ execute_joblist_J_fmm_shared: Allocating multipoleList_4, maxnoOfMinimalDistrsPerBoxBranch =       230
+ININ execute_joblist_J_fmm_shared: Allocating multipoleList_4, maxnoOfMinimalDistrsPerBoxBranch =       230
+ININ execute_joblist_J_fmm_shared: jobIndexLo =            0, jobIndexHi =            0
+ININ execute_joblist_J_fmm_shared: jobIndexLo =            0, jobIndexHi =            0
+ININ execute_joblist_J_fmm_shared: jobIndexLo =            0, jobIndexHi =            0
+ININ execute_joblist_J_fmm_shared: done!
+ININ execute_joblist_J_fmm_shared: done!
+ININ execute_joblist_J_fmm_shared: done!
+ININ execute_joblist_J_fmm_shared: Allocating multipoleList_4, maxnoOfMinimalDistrsPerBoxBranch =       230
+ININ execute_joblist_J_fmm_shared: jobIndexLo =            0, jobIndexHi =            0
+ININ execute_joblist_J_fmm_shared: done!
+ININ multipole job list for J executed, largest L used:  0
+TIIN Executing multipole job list for J took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ compute_J_by_boxes_linear ending OK.
+TIIN compute_J_by_boxes_linear took      0.01 usr cpu s       0.00 sys cpu s       0.01 wall s
+TISC compute_J_by_boxes_sparse total took      0.01 usr cpu s       0.00 sys cpu s       0.01 wall s
+ININ entering create_CSR_for_K, no of basis funcs =     7, threshold_K =   1e-06
+ININ create_box_system end OK, toplevelBoxSize:   7.0, #levels:  1, #boxes at top level:      1
+ININ create_box_system end OK, toplevelBoxSize:   7.0, #levels:  1, #boxes at top level:      1
+ININ create_box_system end OK, toplevelBoxSize:   7.0, #levels:  1, #boxes at top level:      1
+TIIN create_CSR_for_K getting list of distrs took     -0.00 usr cpu s      -0.00 sys cpu s       0.00 wall s
+ININ list of neighbors complete.
+TIIN create_CSR_for_K getting list of neighbors took     -0.00 usr cpu s      -0.00 sys cpu s       0.00 wall s
+TIIN create_CSR_for_K sort each list of neighbors took     -0.00 usr cpu s      -0.00 sys cpu s       0.00 wall s
+ININ 4 threads started OK.
+TIIN identify_needed_elements() took      0.00 usr cpu s      -0.00 sys cpu s       0.00 wall s
+ININ computing nnz..
+ININ create_CSR_for_K: predicted nnz =           28, <->  57.14% of a full matrix
+TIIN create_CSR_for_K last part took      0.00 usr cpu s      -0.00 sys cpu s       0.00 wall s
+TIIN create_CSR_for_K total took      0.00 usr cpu s      -0.00 sys cpu s       0.00 wall s
+TIIN mm_limits_init took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ entering compute_K_by_boxes, no of basis funcs =     7, threshold_K =   1e-06, exchange_box_size =   5.00
+ININ create_box_system end OK, toplevelBoxSize:   7.0, #levels:  1, #boxes at top level:      1
+ININ create_box_system end OK, toplevelBoxSize:   7.0, #levels:  1, #boxes at top level:      1
+ININ create_box_system end OK, toplevelBoxSize:   7.0, #levels:  1, #boxes at top level:      1
+TIIN Compute extent for all distrs took      0.00 usr cpu s      -0.00 sys cpu s       0.00 wall s
+ININ Creating list of distributions done, distrCountTot =       303
+TIIN Creating list of distributions took      0.00 usr cpu s      -0.00 sys cpu s       0.00 wall s
+ININ create_box_system end OK, toplevelBoxSize:   5.0, #levels:  1, #boxes at top level:      1
+ININ create_box_system end OK, toplevelBoxSize:   2.5, #levels:  2, #boxes at top level:      2
+ININ noOfLevelsBasisFuncs = 2, noOfLevelsDiff = 1
+TIIN Creating boxes etc took      0.00 usr cpu s      -0.00 sys cpu s       0.00 wall s
+TIIN getting multipoleNormVectorList took      0.00 usr cpu s      -0.00 sys cpu s       0.00 wall s
+ININ starting loop to setup basisFuncGroupInfoList, with added index checks.
+TIIN GetLimitsAllLevels took      0.00 usr cpu s      -0.00 sys cpu s       0.00 wall s
+TIIN K organize_distributions for all boxes took      0.00 usr cpu s      -0.00 sys cpu s       0.00 wall s
+TIIN Generate multipole limits for each group and for each box took      0.00 usr cpu s      -0.00 sys cpu s       0.00 wall s
+INSC getDmatLimitMatrixCSRList start.
+TIIN getting densityMatrixLimitMatrixList took     -0.00 usr cpu s      -0.00 sys cpu s       0.00 wall s
+ININ job list for K created,        1 jobs
+TIIN creating job list for K took     -0.00 usr cpu s      -0.00 sys cpu s       0.00 wall s
+ININ execute_joblist_K_threaded, noOfThreads =  4, basisFuncListCount_max =     7
+ININ 4 threads started OK.
+ININ all 4 threads have finished, took        0 wall s.
+TIIN Executing job list for K took      0.00 usr cpu s      -0.00 sys cpu s       0.00 wall s
+TIIN compute_K_by_boxes took      0.01 usr cpu s      -0.00 sys cpu s       0.01 wall s
+TISC compute_K_by_boxes_sparse total took      0.01 usr cpu s       0.00 sys cpu s       0.01 wall s
+INSC About to truncate FockMatrix, gap of Fprev >=          0.93144305381
+TISC symmMatrix::mixed_diff for F vs Fprev maxEigValMovement_mixed took      0.00 usr cpu s       0.00 sys cpu s       0.01 wall s
+TISC symmMatrix::eucl_diff  for F vs Fprev maxEigValMovement_eucl  took      0.04 usr cpu s       0.00 sys cpu s       0.04 wall s
+INSC maxEigValMovement_frob  =          0.01710483297
+INSC maxEigValMovement_mixed =          0.01710484344
+INSC maxEigValMovement_eucl  =          0.01186242456
+TISC FockMatrix.eucl_thresh() (with Z) took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+INSC Truncated FockMatrix (eucl with Z), selected threshold = 9.07718e-08, returned error =          0, nnz before = 100.0000 %, nnz after = 100.0000 %
+INSC Computing Euclidean norm of FockMatrix...
+TISC FockMatrix.eucl() took      0.02 usr cpu s       0.00 sys cpu s       0.02 wall s
+INSC Euclidean norm of FockMatrix =         21.77877916684
+INSC Matrix 'S' ( symm ): n =      7, nnz =           49 <-> 100.00 %, mem usage  0.0000 G
+INSC Matrix 'F' ( symm ): n =      7, nnz =           49 <-> 100.00 %, mem usage  0.0000 G
+INSC Matrix 'D' ( symm ): n =      7, nnz =           49 <-> 100.00 %, mem usage  0.0000 G
+INSC nuclearEnergy, energy_2el, energy = 8.792989, 37.946774, -74.961519
+INSC Energy   4 =        -74.96151862045  ( diff     -0.002488445538333 )
+INSC calling compute_FDSminusSDF_sparse, n = 7
+INDE compute_FDSminusSDF_sparse() start.
+TIDE FileWritable::writeAndReadAll took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+INDE writeAndReadAll: '0 MB (1 MatrixGeneral, 0 > 1 MB) + 0 MB (6 MatrixSymmetric, 0 > 1 MB) + 0 MB (2 VectorGeneral, 0 > 1 MB) = 0 MB (9 total, 0 > 1 MB)
+TISC compute_FDSminusSDF_sparse, F*D mult took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+INSC Matrix 'FD before eucl truncation' (normal): n =      7, nnz =           49 <-> 100.00 %, mem usage  0.0000 G
+INSC Matrix 'FD after  eucl truncation' (normal): n =      7, nnz =           49 <-> 100.00 %, mem usage  0.0000 G
+INSC Matrix 'FDS before eucl truncation' (normal): n =      7, nnz =           49 <-> 100.00 %, mem usage  0.0000 G
+INSC Matrix 'FDS after  eucl truncation' (normal): n =      7, nnz =           49 <-> 100.00 %, mem usage  0.0000 G
+INSC compute_FDSminusSDF_sparse ending OK.
+TISC compute_FDSminusSDF_sparse took      0.01 usr cpu s       0.00 sys cpu s       0.01 wall s
+INSC Matrix 'FDS-SDF' (normal): n =      7, nnz =           49 <-> 100.00 %, mem usage  0.0000 G
+INSC SCF_restricted::get_FDSminusSDF finished.
+TISC get_FDSminusSDF took      0.01 usr cpu s       0.00 sys cpu s       0.01 wall s
+INSC maxabs FDS-SDF is  0.00708
+INSC frob   FDS-SDF is   0.0175
+TISC get_error_measure took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+RESC CONVERGED after   4 iterations.
+RESC FINAL ENERGY:        -74.96151862045
+TISC Main SCF loop took      2.12 usr cpu s       0.10 sys cpu s       2.06 wall s
+INSC SCF_restricted::compute_dipole_moment
+ININ compute_operator_matrix_sparse, nBastA =      7, nBastB =      7, pows (x y z) = (1 0 0)
+ININ create_box_system end OK, toplevelBoxSize:   7.0, #levels:  1, #boxes at top level:      1
+ININ compute_operator_matrix_sparse finished.
+TIIN compute_operator_matrix_sparse took      0.06 usr cpu s       0.00 sys cpu s       0.03 wall s
+ININ compute_operator_matrix_sparse, nBastA =      7, nBastB =      7, pows (x y z) = (0 1 0)
+ININ create_box_system end OK, toplevelBoxSize:   7.0, #levels:  1, #boxes at top level:      1
+ININ compute_operator_matrix_sparse finished.
+TIIN compute_operator_matrix_sparse took      0.17 usr cpu s       0.00 sys cpu s       0.09 wall s
+ININ compute_operator_matrix_sparse, nBastA =      7, nBastB =      7, pows (x y z) = (0 0 1)
+ININ create_box_system end OK, toplevelBoxSize:   7.0, #levels:  1, #boxes at top level:      1
+ININ compute_operator_matrix_sparse finished.
+TIIN compute_operator_matrix_sparse took      0.05 usr cpu s       0.00 sys cpu s       0.03 wall s
+INSC dipole_moment_x [atomic units] =      -0.6526552
+INSC dipole_moment_y [atomic units] =      -0.0748553
+INSC dipole_moment_z [atomic units] =       0.0074730
+INSC SCF_general::do_SCF_iterations finished.
+TISC SCF_general::do_SCF_iterations took      2.40 usr cpu s       0.10 sys cpu s       2.20 wall s

@@ -1,0 +1,39 @@
+set -x
+
+function dalton2xyz() {
+    local file="$1"
+    local OFS
+    
+    if [ ! -s $file ] ; then echo "$ME.dalton2toxyz ERROR: invalid input file" ; return ; fi
+    # extract file extension
+    local ext="${file##*.}"
+    # remove file extension
+    local base="${file%.*}"
+    # $base contains the path name, hence everything
+    # will happen at the destination path name
+
+    #
+    # generate an XYZ from a Dalton file
+    # using lines starting with letters and containing three dots
+    #    NOTE: we check if it starts with BASIS or other keywoord
+    #    and jump the required number of lines (5 or 4) before the grep
+    #    and also save the first comment line to output it to the 
+    #    XYZ file.
+    #
+    l=`head -n 1 "$file"`
+    if [[ "$l" = "^BASIS*" ]] ; then
+        jump=5
+        comment=`tail -n +3 "$file" | head -n 1`
+    else
+        jump=4
+        comment=`tail -n +3 "$file" | head -n 1`
+    fi
+    OFS=$IFS ; IFS=$'\n' ; coords=( `tail -n +$jump $file | grep -e "[A-Za-z]*.*\..*\..*\..*"` ) ; IFS=$OFS
+    echo "${#coords[@]}" > $base.xyz
+    echo "$comment" >> $base.xyz
+    for l in "${coords[@]}" ; do
+        echo "$l" >> $base.xyz
+    done
+}
+
+dalton2xyz $1

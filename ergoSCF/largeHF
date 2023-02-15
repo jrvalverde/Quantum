@@ -1,0 +1,44 @@
+#!/bin/bash
+
+ergo_home="$HOME/contrib/ergoSCF"
+
+if [ `$ergo_home/bin/ergo -e precision` == "single" ]; then
+    ergo=$ergo_home/bin/ergo-long
+elif [ `$ergo_home/bin/ergo -e precision` == "double" ]; then
+    ergo=$ergo_home/bin/ergo-long
+else
+    ergo=$ergo_home/bin/ergo
+fi
+
+echo
+
+echo Computing $1 HF/6-31G**
+rm -f ergoscf.out
+$ergo -m $1.xyz <<EOINPUT > /dev/null
+charge = 0
+spin_polarization = 1
+enable_memory_usage_output = 1
+basis = "6-31Gss"
+use_simple_starting_guess=1
+J_K.use_fmm = 1
+J_K.fmm_box_size = 44
+J_K.exchange_box_size = 44
+scf.convergence_threshold = 1e-5
+scf.output_mulliken_pop = 1
+run "HF"
+EOINPUT
+grep CONVERGED ergoscf.out
+if [ $? == 0 ] ; then
+mv ergoscf.out $1.ergoscf.out
+else
+echo ERROR
+mv ergoscf.out $1.ergoscf.err
+echo output file saved as $1.ergoscf.err
+exit 1
+fi
+
+rm density.bin
+
+echo
+echo $1 Hartree-Fock calculation completed successfully!
+echo

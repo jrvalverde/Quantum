@@ -1,0 +1,200 @@
+INMA 
+  Ergo, version 3.2, a program for linear scaling electronic structure
+  calculations.
+  Copyright (C) 2012 Elias Rudberg, Emanuel H. Rubensson, and Pawel Salek.
+  
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+  
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+  
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  
+  Primary academic reference:
+  Kohn−Sham Density Functional Theory Electronic Structure Calculations 
+  with Linearly Scaling Computational Time and Memory Usage,
+  Elias Rudberg, Emanuel H. Rubensson, and Pawel Salek,
+  J. Chem. Theory Comput. 7, 340 (2011),
+  <http://dx.doi.org/10.1021/ct100611z>
+  
+  For further information about Ergo, see <http://www.ergoscf.org>.
+
+INMA  threads_J := 4
+
+INMA  threads_K := 4
+
+INMA  threads := 4
+
+INMA  no_of_threads_for_V := 4
+
+INMA ERGO version 3.2.1
+
+INMA Reading molecule file: h.xyz
+
+INMA read_molecule_file_in_xyz_format: File 'h.xyz' read OK, nBytes = 19
+INMA read_molecule_file_in_xyz_format: nAtoms =      1
+INMA  initial_density := h.STO-3G.density.bin
+
+INMA  basis := STO-6G
+
+INMA Basis really set to STO-6G
+
+INMA  charge := 0
+
+INMA  enable_memory_usage_output := 1
+
+INMA  spin_polarization := 1
+
+INMA  use_fmm := 1
+
+INMA  threshold_2el_J := 1e-10
+
+INMA  threshold_2el_K := 1e-10
+
+INMA  fmm_box_size := 4.4
+
+INMA  calculation_identifier := h
+
+INMA  convergence_threshold := 1e-05
+
+INMA  create_mtx_files_dipole := 1
+
+INMA  create_mtx_files_D := 1
+
+INMA  create_mtx_files_F := 1
+
+INMA  create_mtx_file_S := 1
+
+INMA  output_homo_and_lumo_eigenvectors := 1
+
+INMA  force_restricted := 0
+
+INMA  force_unrestricted := 1
+
+INMA  save_final_potential := 1
+
+INMA  output_mulliken_pop := 1
+
+INMA  write_overlap_matrix := 1
+
+INMA running HF
+
+ININ calling boysfunction_init
+TIIN boysfunction_init took      1.08 usr cpu s       0.00 sys cpu s       1.09 wall s
+ININ calling setup_basis_func_polys
+WAIN Trying basis set file './STO-6G'...
+WAIN Trying basis set file 'basis/STO-6G'...
+WAIN Trying basis set file '../basis/STO-6G'...
+WAIN Trying basis set file '/opt/quantum/ergoSCF/share/ergo/basis/STO-6G'...
+ININ total number of shells in basis set: 160
+ININ Basis set file 'STO-6G' processed OK, noOfAtomTypes = 30
+ININ setup_shells_multi_basis_getcount, noOfShells = 1
+ININ BasisInfoStruct::addBasisfuncsForMolecule, noOfShellsNew = 1
+ININ BasisInfoStruct::normalizeShells finished, normalizationFactor min max :   1.00000002885   1.00000002885
+ININ get_basis_funcs returned OK, number of basis funcs: 1
+ININ getSimplePrimitivesAll returned OK, n = 6
+INSC creating matrix SizesAndBlocks using blockSizeVector:
+INSC blockSizeVector[0] =        65536
+INSC blockSizeVector[1] =         8192
+INSC blockSizeVector[2] =         1024
+INSC blockSizeVector[3] =           32
+INSC blockSizeVector[4] =            1
+INSC creating matrix permutation using blockSizeVector:
+INSC blockSizeVector[0] =        65536
+INSC blockSizeVector[1] =         8192
+INSC blockSizeVector[2] =         1024
+INSC blockSizeVector[3] =           32
+INSC blockSizeVector[4] =            1
+INMA OpenMP used in matrix library. Number of threads set to 4.
+INMA OpenMP used in matrix library. Parallel level set to    1.
+INMA Calling grid_set_tmpdir with tmpdir = '/tmp'
+INMA Running HF (restarted)
+INSC SCF_general constructor, number of basis functions: 1
+MESC memory usage at 'beginning of SCF_general constructor': virt  0.262 G res  0.224 G v peak  0.287 G
+INSC ************** Some general info here **********************
+INSC VERSION: 3.2.1  time :  Wed Oct  2 12:28:16 2013
+INSC machine_epsilon =   1.1e-16
+INSC sizeof(ergo_real) = 8
+INSC sizeof(size_t)    = 4
+INSC sizeof(int)       = 4
+INSC sizeof(long)      = 4
+INSC sizeof(char*)     = 4
+INSC Host name:         'veda'
+INSC Working directory: '/home/jr/work/Quantum/shell/ergoSCF/h'
+INSC Process ID (PID):       9406
+INSC ************************************************************
+INSC Min internuclear distance:      0.00000 a.u.  =      0.00000 Angstrom
+INSC Max internuclear distance:      0.00000 a.u.  =      0.00000 Angstrom
+ININ compute_operator_matrix_sparse, nBastA =      1, nBastB =      1, pows (x y z) = (0 0 0)
+ININ create_box_system end OK, toplevelBoxSize:   7.0, #levels:  1, #boxes at top level:      1
+ININ compute_operator_matrix_sparse finished.
+TIIN compute_operator_matrix_sparse took      0.10 usr cpu s       0.00 sys cpu s       0.05 wall s
+INSC diag elements of ovl matrix differ from 1 by at most 2.22045e-16
+INSC Matrix 'S_symm before trunc' ( symm ): n =      1, nnz =            1 <-> 100.00 %, mem usage  0.0000 G
+MESC memory usage at 'after getting overlap matrix': virt  0.289 G res  0.224 G v peak  0.297 G
+INSC truncating S using threshold value  1e-09
+INSC Truncated S (eucl), selected threshold =      1e-09, returned error =          0, nnz before = 100.0000 %, nnz after = 100.0000 %
+INSC Computing Euclidean norm of overlap matrix (just for fun)...
+TISC S_symm.eucl() took      0.06 usr cpu s      -0.00 sys cpu s       0.04 wall s
+INSC Euclidean norm of overlap matrix =          1.00000000000
+INSC Calling invCholFactor.inch with matOpts.threshold_inch = 0
+TISC invCholFactor.inch took      0.00 usr cpu s      -0.00 sys cpu s       0.00 wall s
+INSC Matrix 'invCholFactor before truncation' (triang): n =      1, nnz =            1 <-> 100.00 %, mem usage  0.0000 G
+INSC truncating Z using threshold value  1e-08
+INSC Truncated Z (eucl), selected threshold =      1e-08, returned error =          0, nnz before = 100.0000 %, nnz after = 100.0000 %
+INSC Matrix 'invCholFactor after truncation' (triang): n =      1, nnz =            1 <-> 100.00 %, mem usage  0.0000 G
+INSC Frobenius norm of invCholFactor after truncation =          1.00000000000
+INSC Euclidean norm of invCholFactor after truncation =          1.00000000000
+TISC invCholFactor.eucl() took      0.00 usr cpu s      -0.00 sys cpu s       0.00 wall s
+MESC memory usage at 'after getting invCholFactor': virt  0.314 G res  0.224 G v peak  0.314 G
+INSC testing invCholFactor by computing ZT*S*Z
+INSC Truncating tmp matrix S*Z using eucl_thresh() with threshold value  1e-08
+INSC frobenius_error for ZT*S*Z is 2.22045e-16
+TISC testing invCholFactor by computing ZT*S*Z took      0.05 usr cpu s      -0.00 sys cpu s       0.03 wall s
+INSC save_symmetric_matrix allocating full n*n matrix.
+INMA Choosing matrixStorageType = MATRIX_STORAGE_TYPE_TRIANGLE.
+MESC memory usage at 'after writing invCholFactor and S_symm to file': virt  0.314 G res  0.225 G v peak  0.314 G
+INSC entering compute_h_core_matrix_sparse, nAtoms = 1, n = 1, threshold = 1e-12
+INSC get_T returned OK.
+TISC get_T took      0.11 usr cpu s       0.00 sys cpu s       0.06 wall s
+INSC compute_V_sparse, molecule.noOfAtoms =     1, maxCharge =   1.00
+ININ get_basis_func_pair_list_1el, n =      1
+ININ create_box_system end OK, toplevelBoxSize:   7.0, #levels:  1, #boxes at top level:      1
+TIIN get_basis_func_pair_list_1el took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+ININ get_basis_func_pair_list_1el, n =      1
+ININ create_box_system end OK, toplevelBoxSize:   7.0, #levels:  1, #boxes at top level:      1
+TIIN get_basis_func_pair_list_1el took      0.00 usr cpu s       0.00 sys cpu s       0.00 wall s
+INSC noOfBasisFuncIndexPairs = 1 ==> storing 100.00 % of a full matrix
+ININ compute_V_linear start.
+ININ compute_V_linear nDistrs    =        36
+ININ compute_V_linear groupCount =        21
+ININ create_box_system end OK, toplevelBoxSize:  10.0, #levels:  1, #boxes at top level:      1
+TIIN compute_V_linear init part (including create_nuclei_mm_tree) took      0.32 usr cpu s       0.00 sys cpu s       0.15 wall s
+TISC Computation of V took      0.37 usr cpu s       0.00 sys cpu s       0.17 wall s
+INSC compute_h_core_matrix_sparse ending OK.
+TISC compute_h_core_matrix_sparse took      0.48 usr cpu s       0.00 sys cpu s       0.23 wall s
+INSC Matrix 'H_core_Matrix before trunc' ( symm ): n =      1, nnz =            1 <-> 100.00 %, mem usage  0.0000 G
+INSC Truncated H_core_Matrix (eucl with Z), selected threshold =      5e-11, returned error =          0, nnz before = 100.0000 %, nnz after = 100.0000 %
+INSC Matrix 'H_core_Matrix after trunc' ( symm ): n =      1, nnz =            1 <-> 100.00 %, mem usage  0.0000 G
+MESC memory usage at 'after getting H_core_Matrix': virt  0.315 G res  0.225 G v peak  0.323 G
+MESC memory usage at 'after writing H_core_Matrix to file': virt  0.315 G res  0.225 G v peak  0.323 G
+INSC noOfElectrons_alpha  noOfElectrons_beta  =  1 0
+INSC SCF_general::do_SCF_iterations
+INMA get_nuclear_repulsion_energy, N = 1
+INMA get_nuclear_repulsion_energy returning energy          0.0000000000000000000000
+INMA get_nuclear_electric_field_energy, N = 1
+INMA get_nuclear_electric_field_energy returning energy          0.0000000000000000000000
+INSC getting starting guess density from file 'h.STO-3G.density.bin'
+INMA ddf_load_density_sparse("h.STO-3G.density.bin")
+ERMA error opening file 'h.STO-3G.density.bin'
+ERMA error in ddf_load_density_getSizes
+ERMA error in ddf_load_density_sparse
+ERSC error in load_density_and_project_sparse
+ERMA Exception caught: error in load_density_and_project_sparse
+

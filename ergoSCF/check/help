@@ -1,0 +1,132 @@
+Usage: ergo [args...]
+args can be: input file name
+             -e "input line"
+             -d VARIABLE_NAME variable to describe
+             -m molecule file name
+             -c extra-charges molecule file name
+             -h this message
+Arguments are interpreted in the order of encounter.
+Predefined variables:
+LIST  : J_K
+   FLOAT : exchange_box_size = 5
+   FLOAT : fmm_box_size = 5
+   FLOAT : fmm_branch_splitter_extent_1 = 0
+   FLOAT : fmm_branch_splitter_extent_2 = 0
+   FLOAT : fmm_branch_splitter_extent_3 = 0
+   FLOAT : fmm_branch_splitter_extent_4 = 0
+   FLOAT : fmm_branch_splitter_extent_5 = 0
+   INT   : fmm_no_of_branches = 0
+   FLOAT : multipole_threshold_factor = 1
+   INT   : threads_J = 4
+   INT   : threads_K = 4
+   FLOAT : threshold_1el = 1e-12
+   FLOAT : threshold_2el_K = 1e-12
+   FLOAT : threshold_2el_J = 1e-12
+   INT   : use_fmm = 1
+LIST  : XC
+   INT   : hicu_do_variation_checking = 0
+   INT   : hicu_use_energy_criterion_only = 0
+   INT   : hicu_use_energy_criterion = 0
+   INT   : hicu_compare_to_refined = 0
+   INT   : hicu_do_double_checking = 1
+   INT   : hicu_use_error_per_volume = 0
+   FLOAT : hicu_start_box_size_debug = 0
+   FLOAT : hicu_box_size = 1.5
+   FLOAT : hicu_max_error = 1e-07
+   INT   : angint = 29
+   INT   : angmin = 6
+   FLOAT : box_size = 5
+   INT   : force_cubic_boxes = 0
+   FLOAT : radint = 5e-09
+   INT   : sparse_mode = 1
+   STRING: type = "Turbo"
+LIST  : lr
+   FLOAT : convergence_threshold = 0.0009
+   INT   : max_iterations = 10
+LIST  : mat
+   INT   : parallelLevel = 1
+   INT   : sparse_matrix_block_size = 32
+   INT   : sparse_matrix_block_factor_1 = 32
+   INT   : sparse_matrix_block_factor_2 = 8
+   INT   : sparse_matrix_block_factor_3 = 8
+   FLOAT : sparse_threshold = 1e-08
+   INT   : threads = 4
+   FLOAT : threshold_inch = 0
+   INT   : write_to_file = 0
+LIST  : scf
+   STRING: calculation_identifier = "N/A"
+   INT   : create_mtx_files_dipole = 0
+   INT   : create_mtx_files_D = 0
+   INT   : create_mtx_files_F = 0
+   INT   : create_mtx_file_S = 0
+   INT   : output_homo_and_lumo_eigenvectors = 0
+   INT   : create_basis_func_coord_file = 0
+   INT   : break_on_energy_increase = 0
+   FLOAT : convergence_threshold = 2e-07
+   FLOAT : sparse_threshold_for_Z = 1e-08
+   FLOAT : sparse_threshold_for_S = 1e-09
+   FLOAT : electric_field_x = 0
+   FLOAT : electric_field_y = 0
+   FLOAT : electric_field_z = 0
+   STRING: purification_truncation_norm = "mixed"
+   FLOAT : electronic_temperature = 0
+   FLOAT : shift_using_prev_density_matrix = 0
+   FLOAT : gap_expected_lower_bound = 0.05
+   FLOAT : puri_eig_acc_factor_for_guess = 0.01
+   FLOAT : purification_eigvalue_err_limit = 1e-08
+   FLOAT : purification_subspace_err_limit = 1e-06
+   FLOAT : error_maxabs_for_diis = 0.5
+   INT   : force_restricted = 0
+   INT   : force_unrestricted = 0
+   INT   : max_no_of_diis_matrices = 10
+   INT   : do_report_density_diff = 1
+   INT   : no_of_careful_first_scf_steps = 0
+   INT   : do_electron_dynamics = 0
+   INT   : max_number_of_iterations = 0
+   INT   : max_restart_count = 2
+   INT   : min_number_of_iterations = 0
+   INT   : no_of_impr_req_for_diis = 4
+   INT   : no_of_threads_for_V = 4
+   INT   : output_density_at_every_step = 1
+   INT   : save_final_potential = 0
+   FLOAT : starting_guess_disturbance = 0
+   FLOAT : step_length_giveup = 5e-05
+   FLOAT : step_length_start = 0.4
+   INT   : output_mulliken_pop = 0
+   INT   : use_diag_on_error_guess = 1
+   INT   : use_diag_on_error = 1
+   INT   : use_diagonalization = 0
+   INT   : write_overlap_matrix = 0
+   INT   : use_diis_always = 0
+   INT   : use_simple_dense_H_core = 0
+STRING: basis = ""
+FLOAT : extra_charges_atom_charge_h = 0.41
+FLOAT : extra_charges_atom_charge_o = -0.82
+INT   : charge = 0
+INT   : rand_seed = 0
+INT   : use_6_d_functions = 0
+INT   : do_ci_after_scf = 0
+INT   : enable_memory_usage_output = 0
+STRING: ghost_basis = ""
+STRING: initial_density = ""
+INT   : output_basis = 0
+INT   : spin_polarization = 0
+STRING: tmpdir = "/tmp"
+INT   : use_simple_starting_guess = 1
+
+Available commands:
+help
+molecule [ghost] "FILENAME"
+molecule_inline [Angstrom]
+ghost_inline [Angstrom]
+range NUM = START COUNT "BASIS-SET"
+run "METHOD", METHOD=HF or a DFT functional
+system "CMD"
+warranty
+quit
+get_excited_state "METHOD" NO_OF_STATES
+get_polarisability "METHOD" "[XYZ]" FREQUENCY
+get_polarisability "METHOD" all FREQUENCY
+set_nthreads(N) where N is a number
+set_nthreads("env") uses OMP_NUM_THREADS to set the thread count
+set_nthreads("detect") uses OMP_NUM_THREADS, or hardware info.
