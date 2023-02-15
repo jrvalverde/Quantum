@@ -1,0 +1,117 @@
+#!/bin/bash
+#
+#	$1	- the structure to process (only A X Y Z coordinates)
+#	$2	- the computation to perform
+#
+#	(C) Jose R Valverde, 2011
+#
+
+f=${f:-$1}
+c=${c:-$2}
+
+export MONDO_SCRATCH="."
+export MONDO_HOME=~/contrib/freeON/
+export MONDO_EXEC=$MONDO_HOME/bin
+
+export FREEON_SCRATCH="."
+export FREEON_HOME=~/contrib/freeON
+export FREEON_EXEC=$FREEON_HOME/bin
+export PATH=$FREEON_HOME/bin:$PATH
+
+if [ ! -f "$f" -o -z "$f" ] ; then
+	echo "Usage: fon file.xyz method"
+	echo "       omit method to list available options"
+	exit
+fi
+
+list_parameter_files()
+{
+    echo "List of available computations"
+    echo "in $FREEON_HOME/templates"
+    for i in $FREEON_HOME/templates/*.pre ; do
+	    echo -n -e "    " `basename $i .pre` "\t"
+	    echo `grep '^#JR: ' $i | sed -e 's/#JR: //g'`
+    done
+    echo "List of available computations"
+    echo "in current directory (*.pre files)"
+    # the -a ensures ls will not generate an error on an empty dir
+    ls -a1 | while read i ; do
+	if [ -f $i ] ; then
+	    # if [[ "$i" =~ *.pre ]] ; then
+	    case $i in
+		*.pre)
+		    echo -n -e "    " `basename $i .pre` "\t"
+		    echo `grep '^#JR: ' $i | sed -e 's/#JR: //g'`
+		    ;;
+	    esac
+	    #fi
+	fi
+    done
+    echo ""
+}
+
+
+# allow to reference user parameter files by full name
+#	NOTE that this will NOT check if they have a .pre 
+#	suffix or if they are valid at all.
+if [ -f "$c" ] ; then
+	compute=$c
+else
+    # if the parameter file does not exist, list available ones
+    if [ -z "$c" -o ! -f $FREEON_HOME/templates/$c.pre -a ! -f ./$c.pre ] ; then
+	list_parameter_files
+	exit
+    fi
+    compute=""
+    if [ -f $FREEON_HOME/templates/$c.pre ] ; then
+	compute=$FREEON_HOME/templates/$c.pre
+    fi
+    # preempt with local version if it exists
+    if [ -f `pwd`/$c.pre ] ; then
+	compute=`pwd`/$c.pre
+    fi
+fi
+# this shouldn't happen.
+if [ ! -f "$compute" ] ; then
+	echo "ERROR: template file $c does not exist"
+	exit
+fi
+
+
+nam=`basename $f .xyz`
+
+cd `dirname $f`
+
+if [ -e ${nam}-${c} ] ; then 
+    echo "ERROR: ${nam}-${c} already exists. Cowardly refusing to proceed"
+    exit
+fi
+mkdir ${nam}-${c}
+
+# create .inp file
+# we do it this way to ensure the path to $compute keeps being valid
+#	if it points to a user-defined non-cwd file
+
+cat $compute > ${nam}-${c}/$nam.inp
+
+echo "<BeginGeometry>" >> ${nam}-${c}/$nam.inp
+#cat $nam.xyz >> ${nam}-${c}/$nam.inp
+tail -n +3 $nam.xyz >> ${nam}-${c}/$nam.inp
+echo "<EndGeometry>" >> ${nam}-${c}/$nam.inp
+
+cd ${nam}-${c}
+
+date -u >> $nam.date
+
+FreeON $nam.inp $nam.out $nam.log $nam.geometries &> $nam.std
+
+if [ -e $nam.geometries.xyz ] ; then
+# remove the last three columns with MD data.
+    cat $nam.geometries.xyz | \
+      sed -e '/^ [A-Z]/ s/ [^ ]* *[^ ]* *[^ ]* *$//g' > \
+      $nam.coords.xyz
+fi
+
+date -u >> $nam.date
+
+cd ..

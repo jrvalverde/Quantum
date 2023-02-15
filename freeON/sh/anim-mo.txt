@@ -1,0 +1,16 @@
+mkdir files
+cd files
+ln -s ../trajectory geometries.xyz
+csplit -n 4 -f traj- -b '%04d.xyz'  geometries.xyz /^ 49/ {*}
+rm geometries.xyz
+mkdir ../samples
+for i in *00 *25 *50 *75 ; do 
+	echo " 49" > ../samples/$i.xyz 
+	cat 8GT_0001 | sed -e 's/[-\.0-9]* *[-\.0-9]* *[-\.0-9]* *$//g' | \
+		tail -n +2 >> ../samples/$i.xyz 
+	echo $i
+done
+cd ../samples
+for i in *.xyz ; do
+	~/contrib/ergoSCF/ergoHF.sh $i
+done

@@ -1,0 +1,31 @@
+#!/bin/bash
+
+f=${f:-$1}
+
+export FREEON_HOME=~/contrib/FreeON
+export PATH=$FREEON_HOME/bin:$PATH
+
+nam=`basename $f .xyz`
+
+compute=$FREEON_HOME/templates/optim.pre
+
+cd `dirname $f`
+
+if [ -e $nam ] ; then exit ; fi
+mkdir $nam
+cd $nam
+
+# create .inp file
+cat $compute > $nam.inp
+
+echo "<BeginGeometry>" >> $nam.inp
+cat ../$nam.xyz >> $nam.inp
+echo "<EndGeometry>" >> $nam.inp
+
+date -u >> $nam.date
+
+FreeON $nam.inp $nam.out $nam.log $nam.geometries &> $nam.std
+
+date -u >> $nam.date
+
+cd ..

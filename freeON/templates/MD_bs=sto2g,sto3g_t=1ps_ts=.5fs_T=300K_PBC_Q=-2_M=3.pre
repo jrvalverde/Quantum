@@ -1,0 +1,63 @@
+<BeginOptions>
+#JR: MD simulation using PBC (1ps/0.5fs) and a system charge of -2
+#JR: in a periodic box (-10,-10,-10,10,10,10) at 300K
+
+# This is commented out because I cannot use MPI.
+#MPIInvoke="mpirun"
+#MPIProcessors=32
+#MPIProcFlag="-np"
+#MPISpatialProc=32
+#MPIMachineFlag="--nper"
+#MPIMachineFile="2"
+
+Charge=-2
+Multiplicity=3
+
+DebugAll =(MinDebug,CheckSums)
+
+# guess for initial Hessian
+Guess=SuperPos
+#	Alternatives are
+#   similar to GAMESS-US
+#Guess=core
+#   restart from previous, must specify HDF file
+#Guess=Restart
+#HDFFile=$MONDO_SCRATCH/MD_$nam-restart-1_23456.hdf
+
+SCFConvergence=(ODA,DIIS)
+SCFMethod=(TRS4,TRS4)
+BasisSets=(STO-2G-SPLIT,STO-3G-SPLIT) 
+ModelChem=(HF,HF)
+Accuracy =(Loose,Good)
+MinSCF=5
+MaxSCF=12
+
+
+# Do Molecular Dynamics
+Grad=(MolecularDynamics)
+# Use Velocity Verlet integration
+MDMethod=Verlet
+# temperature in Kelvin
+InitialTemp=300
+TargetTemp=300
+Thermostat=Berendsen
+# recommended value is 2ps
+BerendsenTau=2
+# Time step in femtoseconds
+DeltaTime=0.5
+# Max MD step to ccompute
+MaxMDStep=2000
+MDProjection=DMTRBO
+MDNumSCF=2
+DMPOrder=2
+
+# Periodic Boundary Conditions in three dimensions
+PBC=(T,T,T)
+Periodic=(AtomCoords)
+
+<EndOptions>
+
+# PBC simulation box coordinates
+<BeginPeriodic>
+  -10.0 -10.0 -10.0 10.0 10.0 10.0
+<EndPeriodic>

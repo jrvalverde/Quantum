@@ -1,0 +1,21 @@
+<BeginOptions>
+#JR: Optimize structure (charge=-4) using STO-3G followed by 6-31G**
+
+# molecule configuration
+Charge=-4
+Multiplicity=1
+
+# guess for initial Hessian
+Guess=SuperPos
+
+# what/how to calculate
+Grad=(Optimize,PrimInt,NoGDIIS,NoBackTr,DiagHess)
+
+# Calculation to be performed in two steps, low and high accuracy
+SCFMethod=(RH,RH)
+BasisSets=(STO-3G-SPLIT,6-31G**-SPLIT)
+ModelChem=(HF,HF)
+Accuracy=(good,tight)
+SCFConvergence=(DIIS,DIIS)
+
+<EndOptions>

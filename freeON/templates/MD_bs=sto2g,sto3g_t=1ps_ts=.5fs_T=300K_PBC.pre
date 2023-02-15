@@ -1,0 +1,50 @@
+<BeginOptions>
+#JR: MD simulation using PBC (1ps/0.5fs)
+
+MPIInvoke="mpirun"
+MPIProcessors=32
+MPIProcFlag="-np"
+MPISpatialProc=32
+MPIMachineFlag="--nper"
+MPIMachineFile="2"
+
+Charge=0
+Multiplicity=1
+
+DebugAll =(MinDebug,CheckSums)
+
+# guess for initial Hessian
+Guess=SuperPos
+#	Alternatives are
+#   similar to GAMESS-US
+#Guess=core
+#   restart from previous, must specify HDF file
+#Guess=Restart
+#HDFFile=$MONDO_SCRATCH/MD_$nam-restart-1_23456.hdf
+
+SCFConvergence=(ODA,DIIS)
+SCFMethod=(TRS4,TRS4)
+BasisSets=(STO-2G-SPLIT,STO-3G-SPLIT) 
+ModelChem=(HF,HF)
+Accuracy =(Loose,Good)
+
+Grad=(MolecularDynamics)
+InitTemp=300
+MDMethod=Verlet
+DeltaTime=0.5
+MaxMDStep=2000
+DMPOrder=2
+MinSCF=5
+MaxSCF=12
+
+#MDProjection=DMTRBO
+#MDNumSCF=2
+
+PBC=(T,T,T)
+Periodic=(AtomCoords)
+
+<EndOptions>
+
+<BeginPeriodic>
+  -10.0 -10.0 -10.0 10.0 10.0 10.0
+<EndPeriodic>

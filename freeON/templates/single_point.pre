@@ -1,0 +1,25 @@
+<BeginOptions>
+#JR: Single-Point calculation using STO-3G followed by 
+#JR:	6-31G**
+
+# molecule configuration
+Charge=0
+Multiplicity=1
+
+# guess for initial Hessian
+Guess=SuperPos
+
+# what/how to calculate
+#Grad=(Optimize,PrimInt,NoGDIIS,NoBackTr,DiagHess)
+
+# Calculation to be performed in two steps, low and high accuracy
+SCFMethod=(RH,RH)
+BasisSets=(STO-3G-SPLIT,6-31G**-SPLIT)
+ModelChem=(HF,HF)
+# we should probably start with loose,good and follow with a refine run
+#Accuracy=(good,tight)
+Accuracy=(loose,good)
+# since sto-3g is cheaper, maybe this should be ODA,DIIS?
+SCFConvergence=(DIIS,DIIS)
+
+<EndOptions>

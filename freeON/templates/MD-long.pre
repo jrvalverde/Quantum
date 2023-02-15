@@ -1,0 +1,40 @@
+<BeginOptions>
+#JR: MD Simulation using 6-31G**-SPLIT (2ps/0.5fs)
+
+# molecule configuration
+Charge=0
+Multiplicity=1
+
+# guess for initial Hessian
+Guess=SuperPos
+#	Alternatives are
+#   similar to GAMESS-US
+#Guess=core
+#   restart from previous, must specify HDF file
+#Guess=Restart
+#HDFFile=$MONDO_SCRATCH/MD_$nam-restart-1_23498.hdf
+
+
+
+# Calculation to be performed
+SCFMethod=(TC2)
+BasisSets=(6-31G**-SPLIT)
+ModelChem=(HF)
+# Accuracy may be loose, good, tight
+Accuracy=(loose)
+# DIIS is faster, but ODA works better for ill-conditioned data
+SCFConvergence=(DIIS)
+MinSCF=10
+MaxSCF=12
+
+# what/how to calculate
+Grad=(MolecularDynamics)
+MDProjection=DMTRBO
+MDMethod=Verlet
+DeltaTime=0.5
+MaxMDStep=4000
+MDNumSCF=2
+
+Geometry=(InAngstrom)
+
+<EndOptions>
