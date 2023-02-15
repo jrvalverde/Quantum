@@ -1,0 +1,1 @@
+mencoder "mf://images/*.jpg" -o movie.avi -ovc lavc -lavcopts vcodec=msmpeg4v2:autoaspect:vbitrate=2160000:mbd=2:keyint=132:vqblur=1.0:cmp=2:subcmp=2:dia=2:mv0:last_pred=3 -fps 8

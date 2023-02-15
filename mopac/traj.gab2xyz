@@ -1,0 +1,1 @@
+tail -n +5 traj.gab | sed -e 's/^ 48 .*nAtoms.*/ 48/g' | sed -e 's/, Velo.*/strom/g' | cut -d' ' -f1,2,3,4,5 > traj.xyz

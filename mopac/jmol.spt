@@ -1,0 +1,265 @@
+# Jmol state version 12.0.48  2011-07-04 18:26;
+
+function _setWindowState() {
+  # height 640;
+  # width 480;
+  stateVersion = 1200048;
+  background [x000000];
+  axis1Color = "[xff0000]";
+  axis2Color = "[x008000]";
+  axis3Color = "[x0000ff]";
+  set ambientPercent 45;
+  set diffusePercent 84;
+  set specular true;
+  set specularPercent 22;
+  set specularPower 40;
+  set specularExponent 6;
+  set zShadePower 1;
+  statusReporting  = true;
+}
+
+function _setFileState(infile) {
+
+  set allowEmbeddedScripts false;
+  set appendNew true;
+  set appletProxy "";
+  set applySymmetryToBonds false;
+  set autoBond true;
+  set bondRadiusMilliAngstroms 150;
+  set bondTolerance 0.45;
+  set defaultLattice {0.0 0.0 0.0};
+  set defaultLoadFilter "";
+  set defaultLoadScript "";
+  set defaultVDW Auto;
+  set forceAutoBond false;
+  set defaultDirectory "/u/jr/work/arrojas/QM/mopac/GTP/MD-OK";
+  #set loadFormat "http://www.rcsb.org/pdb/files/%FILE.pdb.gz";
+  #set smilesUrlFormat "http://cactus.nci.nih.gov/chemical/structure/%FILE/file?format=sdf&get3d=True";
+  #set edsUrlFormat "http://eds.bmc.uu.se/eds/dfs/%LC13/%LCFILE/%LCFILE.omap";
+  #set edsUrlCutoff "load('http://eds.bmc.uu.se/eds/dfs/%LC13/%LCFILE/%LCFILE.sfdat').lines.find('MAP_SIGMA').split(' ')[2]";
+  set legacyAutoBonding false;
+  set minBondDistance 0.4;
+  set minimizationCriterion  0.001;
+  set minimizationSteps  100;
+  set pdbGetHeader false;
+  set pdbSequential false;
+  set percentVdwAtom 23;
+  set smallMoleculeMaxAtoms 40000;
+  set smartAromatic true;
+  load /*file*/@infile;
+
+}
+
+function _setVariableState() {
+
+   set defaultanglelabel "%VALUE %UNITS";
+   set defaultcolorscheme "Jmol";
+   set defaultdistancelabel "%VALUE %UNITS";
+   set defaultdrawarrowscale 0.5;
+   set defaultlattice "{0 0 0}";
+   set defaultloadfilter "";
+   set defaultloadscript "";
+   set defaulttorsionlabel "%VALUE %UNITS";
+   set defaulttranslucent 0.5;
+   set defaultvdw "Auto";
+  set allowembeddedscripts true;
+  set allowrotateselected false;
+  set appletproxy "";
+  set applysymmetrytobonds false;
+  set atompicking true;
+  set atomtypes "";
+  set autobond true;
+  set autofps false;
+  set axes window;
+  set axesmode 0;
+  set axesscale 2.0;
+  set bondmodeor false;
+  set bondradiusmilliangstroms 150;
+  set bondtolerance 0.45;
+  set cartoonbaseedges false;
+  set cartoonrockets false;
+  set chaincasesensitive false;
+  set dataseparator "~~~";
+  set defaultstructuredssp true;
+  set delaymaximumms 0;
+  set dipolescale 1.0;
+  set disablepopupmenu false;
+  set displaycellparameters true;
+  set dotdensity 3;
+  set dotscale 1;
+  set dotsselectedonly false;
+  set dotsurface true;
+  set dragselected false;
+  set drawhover false;
+  set drawpicking false;
+  set dsspcalculatehydrogenalways true;
+  set dynamicmeasurements false;
+  set ellipsoidarcs false;
+  set ellipsoidaxes false;
+  set ellipsoidaxisdiameter 0.02;
+  set ellipsoidball true;
+  set ellipsoiddotcount 200;
+  set ellipsoiddots false;
+  set ellipsoidfill false;
+  set forceautobond false;
+  set fractionalrelative false;
+  set gestureswipefactor 1.0;
+  set greyscalerendering false;
+  set hbondsangleminimum 90.0;
+  set hbondsbackbone false;
+  set hbondsdistancemaximum 3.25;
+  set hbondsrasmol true;
+  set hbondssolid false;
+  set helixstep 1;
+  set helppath "http://chemapps.stolaf.edu/jmol/docs/index.htm";
+  set hermitelevel 0;
+  set hidenameinpopup false;
+  set hidenavigationpoint false;
+  set highresolution false;
+  set historylevel 0;
+  set hoverdelay 0.5;
+  set imagestate true;
+  set iskiosk false;
+  set isosurfacepropertysmoothing true;
+  set justifymeasurements false;
+  set loadatomdatatolerance 0.01;
+  set measureallmodels false;
+  set measurementlabels true;
+  set messagestylechime false;
+  set minbonddistance 0.4;
+  set minimizationcriterion 0.001;
+  set minimizationrefresh true;
+  set minimizationsilent false;
+  set minimizationsteps 100;
+  set monitorenergy false;
+  set multiplebondradiusfactor 0.0;
+  set multiplebondspacing -1.0;
+  set navigatesurface false;
+  set navigationperiodic false;
+  set navigationspeed 5.0;
+  set pdbgetheader false;
+  set pdbsequential false;
+  set percentvdwatom 23;
+  set pickingspinrate 10;
+  set picklabel "";
+  set pointgroupdistancetolerance 0.2;
+  set pointgrouplineartolerance 8.0;
+  set propertyatomnumbercolumncount 0;
+  set propertyatomnumberfield 0;
+  set propertycolorscheme "roygb";
+  set propertydatacolumncount 0;
+  set propertydatafield 0;
+  set quaternionframe "p";
+  set rangeselected false;
+  set ribbonaspectratio 16;
+  set ribbonborder false;
+  set rocketbarrels false;
+  set saveproteinstructurestate true;
+  set selectallmodels true;
+  set selecthetero true;
+  set selecthydrogen true;
+  set sheetsmoothing 1.0;
+  set showhiddenselectionhalos false;
+  set showhydrogens true;
+  set showkeystrokes true;
+  set showmeasurements true;
+  set showmultiplebonds true;
+  set shownavigationpointalways false;
+  set slabbyatom false;
+  set slabbymolecule false;
+  set smallmoleculemaxatoms 40000;
+  set smartaromatic true;
+  set solventprobe false;
+  set solventproberadius 1.2;
+  set ssbondsbackbone false;
+  set stereodegrees -5;
+  set strandcountformeshribbon 7;
+  set strandcountforstrands 5;
+  set strutdefaultradius 0.3;
+  set strutlengthmaximum 7.0;
+  set strutsmultiple false;
+  set strutspacing 6;
+  set testflag1 false;
+  set testflag2 false;
+  set testflag3 false;
+  set testflag4 false;
+  set tracealpha true;
+  set usearcball false;
+  set useminimizationthread true;
+  set usenumberlocalization true;
+  set vectorscale 1.0;
+  set vibrationscale 0.5;
+  set wireframerotation false;
+  set zoomlarge true;
+
+# label defaults;
+  select none;
+  color label none;
+  background label none;
+  set labelOffset 4 4;
+  set labelAlignment left;
+  set labelPointer off;
+  font label 13.0 SansSerif Plain;
+
+}
+
+function _setModelState(orbital) {
+
+  measures delete;
+  select *; set measures nanometers;
+  font measures 15.0 SansSerif Plain;
+  mo cutoff 0.05;
+  mo 10;
+  mo noFill mesh noDots frontOnly frontlit;
+
+  boundBox off;
+  font boundBox 14.0 SansSerif Plain;
+  boundBox off;
+
+  frank on;
+  font frank 16.0 SansSerif Bold;
+  select *;
+
+}
+
+function _setPerspectiveState() {
+  set perspectiveModel 11;
+  set scaleAngstromsPerInch 0.0;
+  set perspectiveDepth true;
+  set visualRange 5.0;
+  set cameraDepth 3.0;
+  boundbox corners {-3.8284168 -2.372333 -8.34502} {4.1155834 1.7926669 9.955978} # volume = 605.52075;
+  center {0.1435833 -0.289833 0.8054786};
+  moveto -1.0 {0 0 1 0} 100.0 0.0 0.1 {0.1435833 -0.289833 0.8054786} 10.732243 {0.0 0.0 0.0} 0.0 0.0 0.0;
+  save orientation "default";
+  moveto 0.0 { 380 650 658 118.9} 100.0 0.0 0.1 {0.1435833 -0.289833 0.8054786} 10.732243 {0.0 0.0 0.0} -3.6319795 1.5669954 0.0;;
+  slab 100;depth 0;
+  set spinX 0; set spinY 30; set spinZ 0; set spinFps 30;  set navX 0; set navY 0; set navZ 0; set navFps 10;
+}
+
+function _setSelectionState() {
+  select ({0:47});
+  set hideNotSelected false;
+}
+
+function _setState(num_frames) {
+  initialize;
+  set refreshing false;
+  _setWindowState;
+  for (var i = 1; i <= num_frames; i = i+1)
+    var filename = ("00000"+i)[-4][0]+".mgf"
+    _setFileState(@filename);
+    _setVariableState;
+    _setModelState(10);
+    _setPerspectiveState;
+    _setSelectionState;
+    set refreshing true;
+    set antialiasDisplay false;
+    set antialiasTranslucent true;
+    set antialiasImages true;
+    var filename = "images/"+("00000"+i)[-4][0]+".jpg"
+    write IMAGE 800 600 JPG @filename
+  end for
+}
+
+_setState(503);
