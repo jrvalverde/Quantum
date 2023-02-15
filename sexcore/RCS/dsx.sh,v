@@ -1,0 +1,348 @@
+head	1.7;
+access;
+symbols;
+locks
+	jr:1.7; strict;
+comment	@# @;
+
+
+1.7
+date	2012.02.02.10.40.06;	author jr;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2012.02.01.14.23.01;	author jr;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2012.01.31.18.30.20;	author jr;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2012.01.31.10.00.01;	author jr;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2012.01.31.09.56.15;	author jr;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2012.01.18.17.46.28;	author jr;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2012.01.18.16.56.31;	author jr;	state Exp;
+branches;
+next	;
+
+
+desc
+@Score using dsx
+@
+
+
+1.7
+log
+@Added progress report [j]
+@
+text
+@#!/bin/bash
+#   Rescore using DSX
+
+# use these on Xistral
+#export ARCH=linux64
+#export EXE_ARCH=linux_64
+#export PATH=/u/jr/contrib/dsx/$ARCH:$PATH
+#export LD_LIBRARY_PATH=/u/jr/contrib/dsx/$ARCH:$LD_LIBRARY_PATH
+
+# use these on NGS
+export ARCH=RHEL_linux32
+export EXE_ARCH=rhel_linux_32
+export PATH=/u/jr/contrib/dsx/$ARCH:$PATH
+export LD_LIBRARY_PATH=/u/jr/contrib/dsx/$ARCH:$LD_LIBRARY_PATH
+
+DSX=~/contrib/dsx/$ARCH/dsx_$EXE_ARCH.lnx
+
+# maximum running time of DSX (m = min., s = sec.)
+tmo=10m
+# grace timeout (15 sec.)
+gto=15s
+#
+# this is to deal with inconsistencies in the timeout command
+# across different versions of Ubuntu
+#
+#	This works in Ubuntu 11.10 (e.g. xistral)
+#
+#toopt="$tmo -k $gto"
+#
+#	This works in Ubuntu 10.04.2 [seconds] (e. g. ngs)
+#
+toopt="300"
+
+if [ ! -d dsx ] ; then mkdir dsx ; fi
+
+cd dsx
+
+if [ ! -e known.mol2 ] ; then ln -s ../known.mol2 . ; fi
+
+if [ ! -e receptor.mol2 ] ; then ln -s ../receptor.mol2 . ; fi
+
+if [ ! -e docked.mol2 ] ; then 
+    if [ -s ../flex-grid-gbsa-0_secondary_conformers.mol2 ] ; then
+	ln -s ../flex-grid-gbsa-0_secondary_conformers.mol2 docked.mol2
+    else
+	if [ -s ../flex-grid-gbsa-0_primary_conformers.mol2 ] ; then
+            ln -s ../flex-grid-gbsa-0_primary_conformers.mol2 docked.mol2
+	else
+            echo "ERROR: NOTHING TO SCORE"
+	fi
+    fi
+fi
+
+#
+# set a timeout of 5' (300") on each
+#	$! expands to the PID of the most recently executed background command:
+#	( some-large-command ) & sleep 300 ; kill $!
+# the above has a problem in that if the command ends earlier we still wait
+# the specified timeout.
+#
+# The solution by J. R. Valverde in EMBnet.news is better, but we may also
+# use now the 'timeout' command from coreutils, which returns 124 if the
+# command was terminated by a timeout
+#
+#	Note: for the EMBnet.News solution try the following
+#
+# (submitter=$$ ; (sleep $tmo ; pkill -P $submitter)& large-command)& wait $!
+# or 
+# (submitter=$! ; (sleep $tmo ; kill $submitter)& large-command)& wait $!
+#
+
+echo -n "Scoring poses with DSX .."
+
+if [ ! -e DSX_receptor_docked.tot.txt ] ; then
+    timeout $toopt $DSX \
+	-P receptor.mol2 -L docked.mol2 -R known.mol2 \
+	-I 0 -D ~/contrib/dsx/pdb_pot_0511/ -o -v -S 1 \
+	-T0 1.0 -T1 1.0 -T2 0.0 -T3 1.0 -c
+    if [ $? -ne 124 ] ; then
+        mv DSX_receptor_docked.txt DSX_receptor_docked.tot.txt
+    fi
+fi
+
+if [ ! -e DSX_receptor_docked.rmsd.txt ] ; then
+    timeout $toopt $DSX \
+	-P receptor.mol2 -L docked.mol2 -R known.mol2 \
+	-I 0 -D ~/contrib/dsx/pdb_pot_0511/ -o -v -S 4 \
+	-T0 1.0 -T1 1.0 -T2 0.0 -T3 1.0 -c
+    if [ $? -ne 124 ] ; then
+    	mv DSX_receptor_docked.txt DSX_receptor_docked.rmsd.txt
+    fi
+fi
+
+if [ ! -e DSX_receptor_docked.txt ] ; then
+    timeout $toopt $DSX \
+	-P receptor.mol2 -L docked.mol2 -R known.mol2 \
+	-I 0 -D ~/contrib/dsx/pdb_pot_0511/ -o -v -S 0 \
+	-T0 1.0 -T1 1.0 -T2 0.0 -T3 1.0 -c
+fi
+
+echo " done"
+####
+echo -n "Scoring reference with DSX .."
+
+if [ ! -e DSX_receptor_known.tot.txt ] ; then
+    timeout $toopt $DSX \
+	-P receptor.mol2 -L known.mol2 -R known.mol2 \
+	-I 0 -D ~/contrib/dsx/pdb_pot_0511/ -o -v -S 1 \
+	-T0 1.0 -T1 1.0 -T2 0.0 -T3 1.0 -c
+    if [ $? -ne 124 ] ; then
+        mv DSX_receptor_known.txt DSX_receptor_known.tot.txt
+    fi
+fi
+
+if [ ! -e DSX_receptor_known.rmsd.txt ] ; then
+    timeout $toopt $DSX \
+	-P receptor.mol2 -L known.mol2 -R known.mol2 \
+	-I 0 -D ~/contrib/dsx/pdb_pot_0511/ -o -v -S 4 \
+	-T0 1.0 -T1 1.0 -T2 0.0 -T3 1.0 -c
+    if [ $? -ne 124 ] ; then
+    	mv DSX_receptor_known.txt DSX_receptor_known.rmsd.txt
+    fi
+fi
+
+
+if [ ! -e DSX_receptor_known.txt ] ; then
+    timeout $toopt $DSX \
+	-P receptor.mol2 -L known.mol2 -R known.mol2 \
+	-I 0 -D ~/contrib/dsx/pdb_pot_0511/ -o -v -S 0 \
+	-T0 1.0 -T1 1.0 -T2 0.0 -T3 1.0 -c
+fi
+
+echo "done"
+
+cd ..
+@
+
+
+1.6
+log
+@Various fixes.
+@
+text
+@d72 2
+d101 1
+d103 1
+d133 1
+@
+
+
+1.5
+log
+@Changed to use timeout(1) from coreutils to limit DSX running time [j]
+@
+text
+@d18 2
+a19 2
+# maximum running time of DSX (5 min. = 300 sec.)
+tmo=5m
+d22 11
+d64 7
+d73 1
+a73 1
+    timeout $tmo -k $gto $DSX \
+d83 1
+a83 1
+    timeout $tmo -k $gto $DSX \
+d93 1
+a93 1
+    timeout $tmo -k $gto $DSX \
+d102 1
+a102 1
+    timeout $tmo -k $gto $DSX \
+d112 1
+a112 1
+    timeout $tmo -k $gto $DSX \
+d123 1
+a123 1
+    timeout $tmo -k $gto $DSX \
+@
+
+
+1.4
+log
+@Added guard checks to avoid repeating work [j]
+@
+text
+@d16 7
+d43 11
+d55 1
+a55 1
+~/contrib/dsx/$ARCH/dsx_$EXE_ARCH.lnx \
+d59 3
+a61 2
+
+mv DSX_receptor_docked.txt DSX_receptor_docked.tot.txt
+d65 1
+a65 1
+~/contrib/dsx/$ARCH/dsx_$EXE_ARCH.lnx \
+d69 3
+a71 2
+
+mv DSX_receptor_docked.txt DSX_receptor_docked.rmsd.txt
+d75 1
+a75 1
+~/contrib/dsx/$ARCH/dsx_$EXE_ARCH.lnx \
+d80 1
+d83 2
+a84 4
+# this one seems to hang (why? it didn't), avoid for now
+#
+if [ -e NOTEXISTS ] ; then
+~/contrib/dsx/$ARCH/dsx_$EXE_ARCH.lnx \
+d88 3
+a90 2
+
+mv DSX_receptor_known.txt DSX_receptor_known.tot.txt
+a91 1
+#
+d94 1
+a94 1
+~/contrib/dsx/$ARCH/dsx_$EXE_ARCH.lnx \
+d98 4
+a102 2
+mv DSX_receptor_known.txt DSX_receptor_known.rmsd.txt
+fi
+d105 1
+a105 1
+~/contrib/dsx/$ARCH/dsx_$EXE_ARCH.lnx \
+d110 2
+a111 1
+	
+@
+
+
+1.3
+log
+@Fixed a hanging invocation (hack). [j]
+@
+text
+@d36 1
+a36 1
+
+d43 1
+d45 1
+d52 1
+d54 1
+d59 1
+a59 1
+
+d74 1
+d81 1
+d83 1
+d88 1
+@
+
+
+1.2
+log
+@Tidied up and made architecture independent.
+@
+text
+@d57 4
+a60 1
+	
+d67 2
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d1 37
+a37 1
+~/contrib/dsx/linux64/dsx_linux_64.lnx \
+d44 1
+a44 1
+~/contrib/dsx/linux64/dsx_linux_64.lnx \
+d51 1
+a51 1
+~/contrib/dsx/linux64/dsx_linux_64.lnx \
+d58 1
+a58 1
+~/contrib/dsx/linux64/dsx_linux_64.lnx \
+d65 1
+a65 1
+~/contrib/dsx/linux64/dsx_linux_64.lnx \
+d72 1
+a72 1
+~/contrib/dsx/linux64/dsx_linux_64.lnx \
+d77 1
+@
